@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  resources :sessions , only: [:new, :create]
+  resources :users
+  
+  # get 'users/create'
+  # get 'users/new' ,  to: 'users#new'
+  # get 'users/logout'
+  # get 'users/show'
   devise_for :users
   # onlyを指定すべきだと思う。
   
