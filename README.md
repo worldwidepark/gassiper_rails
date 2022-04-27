@@ -1,24 +1,20 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+```
+dockerの課題をclone。
+```
+```
+# docker-compose run web bash
+```
 
-Things you may want to cover:
+```
+ERROR: Service 'web' failed to build : The command '/bin/sh -c bundle install' returned a non-zero code: 18
+```
+- 上記のエラー発生のため、dockerfileを修正後再実行。
+```
+# docker-compose run web bash
+```
+```
+# rails new . -force --database=mysql --webpacker
+```
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
