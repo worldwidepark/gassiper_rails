@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'posts/index'
+  get 'posts/create'
+  get 'posts/edit'
+  root to: 'sessions#new'
   resources :sessions , only: [:new, :create]
   resources :users
   

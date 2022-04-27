@@ -1,2 +1,11 @@
-h1 Users#login
-p Find me in app/views/users/login.html.slim
+
+= @error
+
+= form_with url: users_path do |form|
+  .form-group
+    = form.label :email
+    = form.text_field :email, class: 'form-control'
+  .form-group
+    = form.label :password
+    = form.text_field :password, class: 'form-control'
+  = form.submit
