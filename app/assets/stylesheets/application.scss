@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+body{
+  background-color: antiquewhite
+}
+
+ @import "posts"; 
+ @import "sessions";
+ @import "users";
