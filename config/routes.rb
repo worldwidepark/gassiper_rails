@@ -1,17 +1,12 @@
 Rails.application.routes.draw do
-  get 'posts/index'
-  get 'posts/create'
-  get 'posts/edit'
   root to: 'sessions#new'
-  resources :sessions , only: [:new, :create]
+
+  resources :sessions , only: [:new, :create, :destroy]
   resources :users
-  
-  # get 'users/create'
-  # get 'users/new' ,  to: 'users#new'
-  # get 'users/logout'
-  # get 'users/show'
-  devise_for :users
+  resources :posts , only: [:index, :create, :edit]
   # onlyを指定すべきだと思う。
+  devise_for :users
+  # devise_for :sessions
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

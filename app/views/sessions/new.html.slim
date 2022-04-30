@@ -1,13 +1,18 @@
 h1 Sessions#new
 p Find me in app/views/sessions/new.html.slim
 
-= form_with model: @user do |form|
+= form_with url: "sessions" do |form|
   .form-group
     = form.label :email
     = form.text_field :email, class: 'form-control'
   .form-group
     = form.label :password
     = form.text_field :password, class: 'form-control'
+    
   = form.submit
 
+   
+  </div>
 = link_to 'sign up', new_user_path
+p 
+/ = link_to 'log out', session_path, method:"delete" 
