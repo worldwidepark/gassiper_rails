@@ -1,14 +1,6 @@
 class PostsController < ApplicationController
   def index
-  # # @posts = User.all
-  
-  if user_signed_in?
-    @pa = "go"
-  else
-    @pa = "back"
-  end
-
-  
+  # @posts = User.all 
   end
 
   def create

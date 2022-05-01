@@ -1,14 +1,20 @@
-h1 Posts#index
-p Find me in app/views/posts/index.html.slim
-
+.title 
+  h1 
+    = current_user.name 
+    = "'s  Gassiper"
 / - @posts.each do |post|
 /   div 
 /    = post.email
-= @pa
 
 - if session[:user_id]
-  div
-  div つぶやき
-  div = current_user.name 
-  div = link_to 'log out', session_path(session[:user_id]), method: 'delete' 
-
+  .form-post 
+    .post-button 
+      div つぶやき
+      = current_user.name 
+  .nav
+    .form-button
+      div = link_to 'Log out', session_path(session[:user_id]), method: 'delete' 
+- else
+  .nav
+    .form-button
+      div = link_to 'Log in', new_session_path  
