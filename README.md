@@ -1,12 +1,7 @@
 # README
+以下の手順でRailsサーバー立ち上げることができます。
 
-```
-# git clone https://github.com/worldwidepark/gassiper_rails.git
-```
-```
-# cd gassiper_rails
-```
-```
-# docker-compose run web rails db:create && docker-compose up
-```
+1. `git clone https://github.com/worldwidepark/gassiper_rails.git`
+2. `cd gassiper_rails`
+3. `docker-compose run web rails db:create && docker-compose up`
 
