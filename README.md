@@ -1,9 +1,12 @@
 # README
 
 ```
-# docker-compose run web bash
+# git clone https://github.com/worldwidepark/gassiper_rails.git
 ```
 ```
-# rails new . -force --database=mysql --webpacker
+# cd gassiper_rails
+```
+```
+# docker-compose run web rails db:create && docker-compose up
 ```
 
