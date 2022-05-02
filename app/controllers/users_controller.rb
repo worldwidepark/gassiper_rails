@@ -14,10 +14,13 @@ class UsersController < ApplicationController
     end
   end
 
-  def logout
+  def delete
   end
 
-  def show
+  def show    
+  end
+
+  def update  
   end
 
   private

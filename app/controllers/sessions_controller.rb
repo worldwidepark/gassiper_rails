@@ -9,7 +9,6 @@ class SessionsController < ApplicationController
     user = User.find_by_email(params[:email]) 
     if user && user.valid_password?(params[:password])
       sign_in(:user, user)
-      session[:user_id] = user.id
       redirect_to posts_path
     else
       render new_session_path
@@ -17,7 +16,7 @@ class SessionsController < ApplicationController
   end
   
   def destroy
-    @user = User.find_by_email(current_user.id)
+    @user = User.find(current_user.id)
     sign_out(@user)
     redirect_to posts_path 
   end

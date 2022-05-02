@@ -2,3 +2,19 @@ h1 Users#show
 p Find me in app/views/users/show.html.slim
 
 
+.form-input 
+  = form_with url: edit_user_path do |user|
+    .form-input 
+      = user.label "お名前"
+      = user.text_field :name, class: 'form-control'
+    .form-input 
+      = user.label "自己紹介"
+      = user.text_area :introduce, class: 'form-control'
+    .form-input 
+      = user.label :name
+      = user.text_field :name, class: 'form-control'
+    .form-button  
+      = user.submit '編集', class: 'form-button'
+    .form-button  
+      = link_to '戻る', posts_path, class: 'form-button'
+      = link_to '退会', user_path(current_user.id), method: 

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: 'sessions#new'
 
   resources :sessions , only: [:new, :create, :destroy]
-  resources :users
+  resources :users , only: [:new, :create, :show, :update, :destroy]
   resources :posts , only: [:index, :create, :edit]
   # onlyを指定すべきだと思う。
   devise_for :users
