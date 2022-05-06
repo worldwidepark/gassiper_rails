@@ -3,7 +3,7 @@
 .title2  
   h2 Login  
 .form-input
-  = form_with url: "/sessions" do |form|
+  = form_with url: user_session_path do |form|
     .form-input
       = form.label :email
       = form.text_field :email, class: 'form-control', value: @user.email
@@ -13,5 +13,5 @@
     .form-button  
       = form.submit 'Login', class: 'form-button'
     .form-button  
-      = link_to 'Sign up', new_user_path, class: 'form-button'
+      = link_to 'Sign up', new_user_registration_path, class: 'form-button'
    

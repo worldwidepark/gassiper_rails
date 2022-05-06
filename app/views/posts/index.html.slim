@@ -4,15 +4,15 @@
 /   div 
 /    = post.email
 
-- if user_signed_in? 
+- if current_user
   .form-post 
     .post-button 
-      div つぶやき
-      =link_to current_user.name, user_path(current_user.id)
+      div つぶやき 
+      = current_user.name 
   .nav
     .form-button
-      div = link_to 'Log out', session_path(current_user.id), method: 'delete' 
+      div = link_to 'Log out', destroy_user_session_path(session[:user_id]), method: 'delete' , class: 'form-button'
 - else
   .nav
     .form-button
-      div = link_to 'Log in', new_session_path  
+      div = link_to 'Log in', new_user_session_path, class: 'form-button'
