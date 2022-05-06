@@ -1,15 +1,14 @@
-class UsersController < ApplicationController
+class Sessions::UserController < Devise::RegistrationsController
   def new
     @user = User.new
+    @user_params
   end
   
   def create
     @user= User.new(user_params)
-    
     if @user.save
       redirect_to posts_path  
     else
-      @error = @user.errors.full_messages
       render new_user_path
     end
   end
@@ -23,7 +22,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.permit(:email, :password, :name)
+    params.require(:user).permit(:email, :password )
   end
 
 end

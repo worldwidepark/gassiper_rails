@@ -1,4 +1,4 @@
-class SessionsController < ApplicationController
+class Sessions::SessionsController < Devise::SessionsController
 
   def new
     @user = User.new
@@ -9,16 +9,15 @@ class SessionsController < ApplicationController
     user = User.find_by_email(params[:email]) 
     if user && user.valid_password?(params[:password])
       sign_in(:user, user)
-      session[:user_id] = user.id
       redirect_to posts_path
     else
-      render new_session_path
-    end
+      render 'devise/sessions/new'
   end
-  
+end 
+
   def destroy
-    @user = User.find_by_email(current_user.id)
-    sign_out(@user)
+    user = User.find_by_email(current_user.id)
+    sign_out(user)
     redirect_to posts_path 
   end
 

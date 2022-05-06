@@ -4,7 +4,7 @@
   h2 Sign up  
 = @error
 .form-input 
-  = form_with url: "/users" do |form|
+  = form_with url: user_registration_path do |form| 
     .form-input 
       = form.label :email
       = form.text_field :email, class: 'form-control', value: @user.email
@@ -18,4 +18,3 @@
       = form.submit 'Sign up', class: 'form-button'
     .form-button  
       = link_to '戻る', new_user_session_path, class: 'form-button'
-   
