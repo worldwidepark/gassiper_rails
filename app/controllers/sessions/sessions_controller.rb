@@ -9,6 +9,7 @@ class Sessions::SessionsController < Devise::SessionsController
     user = User.find_by_email(params[:email]) 
     if user && user.valid_password?(params[:password])
       sign_in(:user, user)
+      session[:user_id] = user.id
       redirect_to posts_path
     else
       render 'devise/sessions/new'
@@ -16,8 +17,8 @@ class Sessions::SessionsController < Devise::SessionsController
 end 
 
   def destroy
-    user = User.find_by_email(current_user.id)
-    sign_out(user)
+    @user = User.find_by_email(current_user.id)
+    sign_out(@user)
     redirect_to posts_path 
   end
 
