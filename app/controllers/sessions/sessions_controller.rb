@@ -13,8 +13,8 @@ class Sessions::SessionsController < Devise::SessionsController
       redirect_to posts_path
     else
       render 'devise/sessions/new'
-  end
-end 
+    end
+  end 
 
   def destroy
     @user = User.find_by_email(current_user.id)
@@ -26,5 +26,4 @@ end
   def user_params
     params.permit(:email, :password)
   end
-
 end
