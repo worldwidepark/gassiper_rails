@@ -1,4 +1,4 @@
-class Sessions::UserController < Devise::RegistrationsController
+class Sessions::UsersController < Devise::RegistrationsController
   def new
     @user = User.new
     @user_params
@@ -17,6 +17,7 @@ class Sessions::UserController < Devise::RegistrationsController
   end
 
   def show
+    @user = User.find(current_user.id)
   end
 
   private
