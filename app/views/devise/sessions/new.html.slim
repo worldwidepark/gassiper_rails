@@ -3,15 +3,14 @@
 .title2  
   h2 Login  
 .form-input
-  = form_with url: user_session_path do |form|
+  = form_for resource, as: resource_name, url: user_session_path(resource_name) do |form|
     .form-input
       = form.label :email
-      = form.text_field :email, class: 'form-control', value: @user.email
+      = form.text_field :email, class: 'form-control'
     .form-input 
       = form.label :password
-      = form.text_field :password, class: 'form-control', value: @user.password
+      = form.text_field :password, class: 'form-control'
     .form-button  
       = form.submit 'Login', class: 'form-button'
     .form-button  
       = link_to 'Sign up', new_user_registration_path, class: 'form-button'
-   
