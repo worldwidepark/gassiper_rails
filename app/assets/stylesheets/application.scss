@@ -15,9 +15,37 @@
  */
 body{
   background-color: antiquewhite;
- 
+  display: flex;
+  justify-content: center; 
+  flex-direction: column; 
+}
+.make-center{
+  display: flex;
+  justify-content: center; 
+  flex-direction: column; 
+  align-items: center;
+  text-align: center;
+}
+.title{
+  background-color:aqua;
+  border-radius: 25px;
+  border: none; 
+  margin: 5px;
+  font-size: 2em;
+  font-weight: bold;
+}
+.title2{
+  background-color:skyblue;
+  border-radius: 25px;
+  border: none; 
+  font-size: 1.5em;
+  font-weight: bold;
+}
+a{
+  text-decoration: none;
+}
+a:visited{
+  color: black;
 }
 
- @import "posts"; 
- @import "sessions";
- @import "users";
+ @import "form";

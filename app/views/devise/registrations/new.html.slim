@@ -1,25 +1,23 @@
 .title 
-  h1 Welcome to Gassiper
+  .make-center Welcome to Gassiper
 .title2  
-  h2 Sign up  
-= @error
-.form-input 
+  .make-center Sign up  
+  
+.form-input.make-center
   = form_for resource, as: resource_name, url: registration_path(resource_name) do |form|
-    .form-input 
+      = render "devise/shared/error_messages", resource: resource
       = form.label :email
       = form.text_field :email, class: 'form-control', value: @user.email
-    .form-input 
+  
       = form.label :password
       = form.text_field :password, class: 'form-control'
-    .form-input 
+
       = form.label :password_confirmation
       = form.text_field :password_confirmation, class: 'form-control' 
-    .form-input 
+ 
       = form.label :name
       = form.text_field :name, class: 'form-control', value: @user.name
-    .form-input   
-      .form-button  
-        = form.submit 'Sign up', class: 'form-button'
-      .form-button  
-        = link_to '戻る', new_user_session_path, class: 'form-button'
- 
+
+      = form.submit 'Sign up', class: 'form-button'
+     
+  = link_to 'Back', new_user_session_path, class: 'form-button'
