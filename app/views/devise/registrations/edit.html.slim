@@ -2,19 +2,19 @@ h1 Users#edit
 p Find me in app/views/users/edit.html.slim
 
 
-.form-input 
-  = form_with url: edit_user_path do |user|
-    .form-input 
-      = user.label "お名前"
-      = user.text_field :name, class: 'form-control'
-    .form-input 
-      = user.label "自己紹介"
-      = user.text_area :introduce, class: 'form-control'
-    .form-input 
-      = user.label :name
-      = user.text_field :name, class: 'form-control'
+.form-input.make-center 
+  = form_with modle: resource, as: resource_name, url: users_patch_path(resource_name), method: :patch do |user|
+    / input name= "_method" type="hidden" value="patch"
+    = user.label "お名前"
+    = user.text_field :name, class: 'form-control'
+  
+    = user.label "自己紹介"    
+    = user.text_area :introduce, class: 'form-control', value: current_user.introduce 
+    
+    / = user.label :name 
+    / = user.text_field :name, class: 'form-control'
     .form-button  
       = user.submit '編集', class: 'form-button'
-    .form-button  
-      = link_to '戻る', posts_path, class: 'form-button'
-      = link_to '退会', user_path(current_user.id), method: 
+  .form-button  
+    = link_to '戻る', posts_path, class: 'form-button'
+    / = link_to '退会', user_registration_path(current_user.id), method: DELETE

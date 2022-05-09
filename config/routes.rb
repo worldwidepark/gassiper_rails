@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   }
   devise_scope :user do
     get "/user/show" => "sessions/users#show"
+    patch "/users/patch" => "sessions/users#update"
     end
   
   # get 'user/show', to: 'sessions/users#show' 
