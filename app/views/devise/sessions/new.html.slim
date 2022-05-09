@@ -4,7 +4,7 @@
   .make-center Login
   
 .form-input.make-center 
-  = form_for resource, as: resource_name, url: user_session_path(resource_name) do |form|
+  = form_with model: resource, as: resource_name, url: user_session_path(resource_name) do |form|
       = form.label :email
       = form.text_field :email, class: 'form-control'
       
