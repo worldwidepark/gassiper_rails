@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     :confirmations => 'users/confirmations',
     :sessions => 'sessions/sessions',
     :passwords => 'users/passwords' ,
-    :registration => 'sessions/users'
+    :registrations => 'sessions/users'
   }
 
 
