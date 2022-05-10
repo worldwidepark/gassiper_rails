@@ -4,11 +4,11 @@
 /   div 
 /    = post.email
 
+
 - if current_user
   .form-post 
-    .post-button.make-center 
-      div つぶやき 
-      = current_user.name 
+    div つぶやき
+    = current_user.name
   .nav.make-center 
     = link_to 'Log out', destroy_user_session_path(session[:user_id]), method: 'delete', class: 'nav-button'
 - else
@@ -37,14 +37,13 @@ scss:
   .form-post{
     position: fixed;
     top: 50%;
-    left: 80%
-  }
-  .post-button{
-    padding: 5px 0;
-    font-weight: 600;
+    left: 80%;
+    vertical-aligin: center;
+    text-align: center;
     background-color: aqua;
-    width: 150px;
     border-radius: 25px;
-    border: none;
     font-size: 15px;
+    font-weight: 600;
+    padding: 5px;
+    width: 150px;
   }

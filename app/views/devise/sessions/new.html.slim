@@ -5,12 +5,13 @@
   
 .form-input.make-center 
   = form_with model: resource, as: resource_name, url: user_session_path(resource_name) do |form|
+    .form-control
       = form.label :email
-      = form.text_field :email, class: 'form-control'
-      
+      = form.text_field :email
+    .form-control    
       = form.label :password
-      = form.text_field :password, class: 'form-control'
-      
-      = form.submit 'Login', class: 'form-button'
+      = form.text_field :password
+        
+    = form.submit 'Login', class: 'form-button'
 
   = link_to 'Sign up', new_user_registration_path, class: 'form-button'
