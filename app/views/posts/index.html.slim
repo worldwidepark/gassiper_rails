@@ -1,5 +1,5 @@
 .title 
-  .make-center Gassiper
+  .make-center-column Gassiper
 / - @posts.each do |post|
 /   div 
 /    = post.email
@@ -9,10 +9,10 @@
   .form-post 
     div つぶやき
     = current_user.name
-  .nav.make-center 
+  .nav.make-center-column 
     = link_to 'Log out', destroy_user_session_path(session[:user_id]), method: 'delete', class: 'nav-button'
 - else
-  .nav.make-center
+  .nav.make-center-column
     = link_to 'Log in', new_user_session_path, class: 'nav-button'
 
 

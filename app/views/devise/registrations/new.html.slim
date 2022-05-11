@@ -1,11 +1,11 @@
 .title 
-  .make-center Welcome to Gassiper
+  .make-center-column Welcome to Gassiper
 .title2  
-  .make-center Sign up  
+  .make-center-column Sign up  
 
-.make-center  
+.make-center-column  
   = render "devise/shared/error_messages", resource: resource
-.form-input.make-center
+.form-input.make-center-column
   = form_with model: resource, as: resource_name, url: user_registration_path(resource_name) do |form|
     .form-control
       = form.label :email

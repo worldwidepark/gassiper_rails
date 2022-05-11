@@ -1,9 +1,9 @@
 .title
   .make-center Welcome to Gassiper
 .title2  
-  .make-center Login
+  .make-center-column Login
   
-.form-input.make-center 
+.form-input.make-center-column 
   = form_with model: resource, as: resource_name, url: user_session_path(resource_name) do |form|
     .form-control
       = form.label :email
