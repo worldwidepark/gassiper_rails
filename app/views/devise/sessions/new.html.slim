@@ -1,17 +1,17 @@
-.title 
-  h1 Welcome to Gassiper
+.title
+  .make-center Welcome to Gassiper
 .title2  
-  h2 Login  
-.form-input
-  = form_with url: user_session_path do |form|
-    .form-input
+  .make-center Login
+  
+.form-input.make-center 
+  = form_with model: resource, as: resource_name, url: user_session_path(resource_name) do |form|
+    .form-control
       = form.label :email
-      = form.text_field :email, class: 'form-control', value: @user.email
-    .form-input 
+      = form.text_field :email
+    .form-control    
       = form.label :password
-      = form.text_field :password, class: 'form-control', value: @user.password
-    .form-button  
-      = form.submit 'Login', class: 'form-button'
-    .form-button  
-      = link_to 'Sign up', new_user_registration_path, class: 'form-button'
-   
+      = form.text_field :password
+        
+    = form.submit 'Login', class: 'form-button'
+
+  = link_to 'Sign up', new_user_registration_path, class: 'form-button'

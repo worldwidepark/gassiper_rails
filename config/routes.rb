@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     :confirmations => 'users/confirmations',
     :sessions => 'sessions/sessions',
     :passwords => 'users/passwords' ,
-    :registration => 'sessions/users'
+    :registrations => 'sessions/registrations'
   }
   devise_scope :user do
     get "/user/show" => "sessions/users#show"

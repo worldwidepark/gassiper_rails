@@ -1,18 +1,49 @@
 .title 
-  h1 Gassiper
+  .make-center Gassiper
 / - @posts.each do |post|
 /   div 
 /    = post.email
 
-- if user_signed_in? 
+
+- if current_user
   .form-post 
-    .post-button 
-      div つぶやき 
-      = link_to current_user.name, user_show_path(current_user.id)
-  .nav
-    .form-button
-      div = link_to 'Log out', destroy_user_session_path(session[:user_id]), method: 'delete' , class: 'form-button'
+    div つぶやき
+    = current_user.name
+  .nav.make-center 
+    = link_to 'Log out', destroy_user_session_path(session[:user_id]), method: 'delete', class: 'nav-button'
 - else
-  .nav
-    .form-button
-      div = link_to 'Log in', new_user_session_path, class: 'form-button'
+  .nav.make-center
+    = link_to 'Log in', new_user_session_path, class: 'nav-button'
+
+
+scss:
+  .nav{
+    position: fixed;
+    top:100px;
+    left: 80%;
+    border-radius: 25px;
+    border: none;  
+  }
+  .nav-button{
+    font-weight: 600;
+    background-color:white;
+    width: 150px;
+    padding: 3px 0;
+    border-radius: 25px;
+    border: none;
+    font-size: 15px;
+    text-align: center;
+  }
+  .form-post{
+    position: fixed;
+    top: 50%;
+    left: 80%;
+    vertical-aligin: center;
+    text-align: center;
+    background-color: aqua;
+    border-radius: 25px;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 5px;
+    width: 150px;
+  }
