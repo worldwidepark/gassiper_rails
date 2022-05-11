@@ -9,8 +9,8 @@ Rails.application.routes.draw do
     :registrations => 'sessions/registrations'
   }
   devise_scope :user do
-    get "/user/show" => "sessions/users#show"
-    patch "/users/patch" => "sessions/users#update"
+    get "/registrations/show" => "sessions/registrations#show"
+    # patch "/registrations/patch" => "sessions/registrations#update"
     end
   
   # get 'user/show', to: 'sessions/users#show' 
