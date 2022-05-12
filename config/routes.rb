@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     :passwords => 'users/passwords' ,
     :registrations => 'sessions/registrations'
   }
+<<<<<<< HEAD
   devise_scope :user do
     get "/registrations/show" => "sessions/registrations#show"
     # patch "/registrations/patch" => "sessions/registrations#update"
@@ -15,10 +16,9 @@ Rails.application.routes.draw do
   
   # get 'user/show', to: 'sessions/users#show' 
   # resources :sessions , only: [:new, :create, :destroy]
+=======
+>>>>>>> origin/create_session
   resources :posts , only: [:index, :create, :edit]
-  # onlyを指定すべきだと思う。
-  # devise_for :users
-  # devise_for :Sessions
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
