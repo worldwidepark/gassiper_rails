@@ -8,13 +8,8 @@
 - if current_user
   .form-post 
     div つぶやき
-<<<<<<< HEAD
-    = link_to current_user.name, registrations_show_path(current_user.id)
-  .nav.make-center 
-=======
     = current_user.name
   .nav.make-center-column 
->>>>>>> origin/create_session
     = link_to 'Log out', destroy_user_session_path(session[:user_id]), method: 'delete', class: 'nav-button'
 - else
   .nav.make-center-column
