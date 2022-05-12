@@ -56,4 +56,3 @@ class Sessions::RegistrationsController < Devise::RegistrationsController
  
 
 end
-
