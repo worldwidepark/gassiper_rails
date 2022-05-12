@@ -3,7 +3,6 @@ class Sessions::RegistrationsController < Devise::RegistrationsController
   
   def create
     build_resource(sign_up_params)
-
     resource.save
     yield resource if block_given?
     if resource.persisted?
@@ -31,17 +30,7 @@ class Sessions::RegistrationsController < Devise::RegistrationsController
   def update
     @user = User.find(current_user.id) 
     @user.update(user_params)
-    # yield resource if block_given?
-    # if resource_updated
-    #   set_flash_message_for_update(resource, prev_unconfirmed_email)
-    #   bypass_sign_in resource, scope: resource_name if sign_in_after_change_password?
-    
     redirect_to posts_path
-    # else
-    #   clean_up_passwords resource
-    #   set_minimum_password_length
-    #   respond_with resource
-    # end
   end
 
   private
@@ -51,7 +40,7 @@ class Sessions::RegistrationsController < Devise::RegistrationsController
   end
 
   def configure_account_update_parameters
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :introduce])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :introduce, :deleted_flag])
   end
  
 

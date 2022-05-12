@@ -2,7 +2,7 @@ h1 Users#edit
 p Find me in app/views/users/edit.html.slim
 
 
-.form-input.make-center 
+.form-input.make-center-column 
   = form_with modle: resource, as: resource_name, url: user_registration_path(resource_name), method: :patch do |user|
     / input name= "_method" type="hidden" value="patch"
     = user.label "お名前"

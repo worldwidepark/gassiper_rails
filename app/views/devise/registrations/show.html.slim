@@ -1,9 +1,52 @@
-h1 p 
-p 
-  = @user.introduce
-  p 
-  = @user.name
-.form-button  
-  = link_to '編集', edit_user_registration_path, class: 'form-button'
-.form-button  
-  = link_to '戻る', posts_path, class: 'form-button'
+.title 
+  .make-center-column Gassiper
+.title2  
+  .make-center-column Profile
+
+.make-center-column
+  .show-form.make-center-column
+    .show-form-control
+      .show-label Name 
+      .show-name
+      = @user.name
+      .show-email
+      = @user.email
+    .show-form-control
+      .show-label Introduce
+      .show-introduce 
+        = @user.introduce
+    
+  .show-button
+      .form-button  
+        = link_to '編集', edit_user_registration_path, class: 'form-button'
+      .form-button  
+        = link_to '戻る', posts_path, class: 'form-button'
+
+scss: 
+  .show-form{
+    height: 500px;
+    width: 300px;
+    background-color:white;
+    border-radius: 25px;
+    position: fixed;
+    top: 200px;
+  }
+  .show-form-control{
+    height: 100px;
+    width: 200px;
+    background-color:aqua;
+    border-radius: 25px;
+    margin: 20px 0px;
+  }
+  .show-label{
+    position: relative;
+    font-weight: bold; 
+    top: -30px;
+  }
+  .show-name{
+    margin: 10px 0 ;
+  }
+  .show-button{
+    position: fixed;
+    top: 700px;
+  }
