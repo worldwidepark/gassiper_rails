@@ -2,18 +2,19 @@
   .make-center-column Gassiper
 .title2  
   .make-center-column Profile
-
+.make-center-column
+  .flash 
+    = flash[:registration]  
 .deactivate-button
-  = link_to '退会', user_registration_path, class: 'nav-button', method: :delete
-= @user.deleted_flag
+  = link_to '退会', user_registration_path, method: :delete
 .make-center-column
   .show-form.make-center-column
     .show-form-control
-      .show-label Name 
+      .show-label お名前
       .show-name
         = @user.name
     .show-form-control
-      .show-label Introduce
+      .show-label 自己紹介
       .show-introduce 
         = @user.introduce
     
@@ -27,9 +28,11 @@ scss:
   .deactivate-button{
     position: fixed;
     top: 120px;
-    left: 92%;
-
-    background-color: red;
+    left: 90%;
+    background-color: salmon;
+    text-align: center;
+    width: 70px;
+    border-radius: 10px;
   }
   .show-form{
     height: 400px;

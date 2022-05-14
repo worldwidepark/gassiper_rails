@@ -26,11 +26,12 @@ class Sessions::RegistrationsController < Devise::RegistrationsController
     user_find
   end
 
-
   def update
     user_find
-    @user.update(user_params)
-    redirect_to posts_path
+    if !@user.update(user_params)
+      flash[:registration] = "更新に失敗しました。"
+    end
+    redirect_to registrations_show_path
   end
 
   def destroy
@@ -39,9 +40,7 @@ class Sessions::RegistrationsController < Devise::RegistrationsController
     sign_out(@user)
     redirect_to posts_path
   end
-
-
-
+  
   private
 
   def user_params

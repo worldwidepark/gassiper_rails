@@ -2,7 +2,9 @@
   .make-center-column Welcome to Gassiper
 .title2  
   .make-center-column Login
-  
+.make-center-column
+  .flash 
+    = flash[:session]  
 .form-input.make-center-column 
   = form_with model: resource, as: resource_name, url: user_session_path(resource_name) do |form|
     .form-control

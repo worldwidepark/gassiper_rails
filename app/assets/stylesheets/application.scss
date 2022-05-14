@@ -41,8 +41,19 @@ body{
   font-size: 1.5em;
   font-weight: bold;
 }
+.flash{
+  margin-top: 20px;
+  color: white;
+  background-color:crimson;
+  border-radius: 25px;
+  border: none; 
+  font-size: 1.0em;
+  font-weight: bold;
+  width: 300px; 
+}
 a{
   text-decoration: none;
+  color: black;
 }
 a:visited{
   color: black;
