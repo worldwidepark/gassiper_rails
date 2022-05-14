@@ -3,14 +3,15 @@
 .title2  
   .make-center-column Profile
 
+.deactivate-button
+  = link_to '退会', user_registration_path, class: 'nav-button', method: :delete
+= @user.deleted_flag
 .make-center-column
   .show-form.make-center-column
     .show-form-control
       .show-label Name 
       .show-name
-      = @user.name
-      .show-email
-      = @user.email
+        = @user.name
     .show-form-control
       .show-label Introduce
       .show-introduce 
@@ -23,8 +24,15 @@
         = link_to '戻る', posts_path, class: 'form-button'
 
 scss: 
+  .deactivate-button{
+    position: fixed;
+    top: 120px;
+    left: 92%;
+
+    background-color: red;
+  }
   .show-form{
-    height: 500px;
+    height: 400px;
     width: 300px;
     background-color:white;
     border-radius: 25px;
@@ -33,10 +41,15 @@ scss:
   }
   .show-form-control{
     height: 100px;
-    width: 200px;
-    background-color:aqua;
-    border-radius: 25px;
+    width: 280px;
+    background-color:white;
+    border-radius: 5px;
     margin: 20px 0px;
+    position: relative;
+    top: 15px;
+  
+    word-break:break-all;
+
   }
   .show-label{
     position: relative;
@@ -45,8 +58,12 @@ scss:
   }
   .show-name{
     margin: 10px 0 ;
+    font-size: 20px;   
   }
   .show-button{
     position: fixed;
-    top: 700px;
+    top: 600px;
   }
+  .show-introduce{
+    font-size: 15px;
+  } 

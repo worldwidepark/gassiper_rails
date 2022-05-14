@@ -23,15 +23,24 @@ class Sessions::RegistrationsController < Devise::RegistrationsController
   end
 
   def show
-    @user = User.find(current_user.id)
+    user_find
   end
 
 
   def update
-    @user = User.find(current_user.id) 
+    user_find
     @user.update(user_params)
     redirect_to posts_path
   end
+
+  def destroy
+    user_find
+    @user.update(deleted_flag: true)
+    sign_out(@user)
+    redirect_to posts_path
+  end
+
+
 
   private
 
@@ -42,6 +51,9 @@ class Sessions::RegistrationsController < Devise::RegistrationsController
   def configure_account_update_parameters
     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :introduce, :deleted_flag])
   end
- 
+
+  def user_find
+    @user = User.find(current_user.id)    
+  end
 
 end
