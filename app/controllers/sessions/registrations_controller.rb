@@ -29,7 +29,6 @@ class Sessions::RegistrationsController < Devise::RegistrationsController
   def update
     if !@user.update(user_params)
       redirect_to registrations_show_path, alert: "更新に失敗しました。" 
-      # flash[:registration] = "更新に失敗しました。"
     else
       redirect_to registrations_show_path, notice: "更新が完了しました。"
     end
