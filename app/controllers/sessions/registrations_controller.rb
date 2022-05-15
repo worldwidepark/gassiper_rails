@@ -1,5 +1,6 @@
 class Sessions::RegistrationsController < Devise::RegistrationsController
   before_action :configure_account_update_parameters
+  before_action :user_find
   
   def create
     build_resource(sign_up_params)
@@ -23,19 +24,18 @@ class Sessions::RegistrationsController < Devise::RegistrationsController
   end
 
   def show
-    user_find
   end
 
   def update
-    user_find
     if !@user.update(user_params)
-      flash[:registration] = "更新に失敗しました。"
+      redirect_to registrations_show_path, alert: "更新に失敗しました。" 
+      # flash[:registration] = "更新に失敗しました。"
+    else
+      redirect_to registrations_show_path, notice: "更新が完了しました。"
     end
-    redirect_to registrations_show_path
   end
 
   def destroy
-    user_find
     @user.update(deleted_flag: true)
     sign_out(@user)
     redirect_to posts_path
@@ -52,7 +52,9 @@ class Sessions::RegistrationsController < Devise::RegistrationsController
   end
 
   def user_find
-    @user = User.find(current_user.id)    
+    if current_user
+      @user = User.find(current_user.id)    
+    end
   end
 
 end

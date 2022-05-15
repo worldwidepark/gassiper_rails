@@ -2,9 +2,11 @@
   .make-center-column Gassiper
 .title2  
   .make-center-column Profile
-.make-center-column
-  .flash 
-    = flash[:registration]  
+.flash
+  .notice
+    = notice
+  .alert
+    = alert 
 .deactivate-button
   = link_to '退会', user_registration_path, method: :delete
 .make-center-column
