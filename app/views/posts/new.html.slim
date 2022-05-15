@@ -1,0 +1,16 @@
+.title 
+  .make-center-column Gassiper
+.title2  
+  .make-center-column Gassip something ! 
+
+.post-input.make-center-column
+  = form_with model: @post , url: posts_path do |form|
+    = form.hidden_field :user_id, value: current_user.id
+    .post-control
+      = form.text_area :text, value: @post.text
+    .post-submit.
+      = form.submit '投稿'    
+
+/ .post-delete 
+/   = link_to '削除'
+    
