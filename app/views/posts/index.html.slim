@@ -4,11 +4,10 @@
 /   div 
 /    = post.email
 
-
 - if current_user
   .form-post 
     div つぶやき
-    = current_user.name
+    = link_to current_user.name, registrations_show_path
   .nav.make-center-column 
     = link_to 'Log out', destroy_user_session_path(session[:user_id]), method: 'delete', class: 'nav-button'
 - else

@@ -1,0 +1,74 @@
+.title 
+  .make-center-column Gassiper
+.title2  
+  .make-center-column Profile
+.flash
+  .notice
+    = notice
+  .alert
+    = alert 
+.deactivate-button
+  = link_to '退会', user_registration_path, method: :delete
+.make-center-column
+  .show-form.make-center-column
+    .show-form-control
+      .show-label お名前
+      .show-name
+        = @user.name
+    .show-form-control
+      .show-label 自己紹介
+      .show-introduce 
+        = @user.introduce
+    
+  .show-button
+      .form-button  
+        = link_to '編集', edit_user_registration_path, class: 'form-button'
+      .form-button  
+        = link_to '戻る', posts_path, class: 'form-button'
+
+scss: 
+  .deactivate-button{
+    position: fixed;
+    top: 120px;
+    left: 90%;
+    background-color: salmon;
+    text-align: center;
+    width: 70px;
+    border-radius: 10px;
+  }
+  .show-form{
+    height: 400px;
+    width: 300px;
+    background-color:white;
+    border-radius: 25px;
+    position: fixed;
+    top: 200px;
+  }
+  .show-form-control{
+    height: 100px;
+    width: 280px;
+    background-color:white;
+    border-radius: 5px;
+    margin: 20px 0px;
+    position: relative;
+    top: 15px;
+  
+    word-break:break-all;
+
+  }
+  .show-label{
+    position: relative;
+    font-weight: bold; 
+    top: -30px;
+  }
+  .show-name{
+    margin: 10px 0 ;
+    font-size: 20px;   
+  }
+  .show-button{
+    position: fixed;
+    top: 600px;
+  }
+  .show-introduce{
+    font-size: 15px;
+  } 
