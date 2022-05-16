@@ -2,14 +2,50 @@
   .make-center-column Gassiper
 .title2  
   .make-center-column Gassip something ! 
-
-.post-input.make-center-column
+.flash
+  .alert
+    = alert 
+.make-center-column
   = form_with model: @post , url: posts_path do |form|
     = form.hidden_field :user_id, value: current_user.id
-    .post-control
-      = form.text_area :text, value: @post.text
-    .post-submit.
-      = form.submit '投稿'    
+    .post-input-shell
+      = form.text_area :text, class: 'post-input-form'
+      = form.submit '投稿', class: 'post-submit'
+      = link_to '戻る', posts_path, class: 'post-submit'
+scss:
+  .post-input-shell{
+    width: 500px;
+    height: 300px;
+    position: absolute;
+    top: 150px;
+    left: 50%;
+    margin-left: -250px ;    
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center; 
+  }
+  .post-input-form{
+    width: 400px;
+    height: 200px;
+    border: none;
+    resize: none;
+    outline: none;
+  } 
+  .post-submit{
+    position: relative;
+    top: 100px;
+    font-weight: 600;
+    background-color:white;
+    width: 150px;
+    border-radius: 25px;
+    border: none;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 5px;
+  }
 
 / .post-delete 
 /   = link_to '削除'
