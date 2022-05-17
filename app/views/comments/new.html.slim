@@ -1,20 +1,15 @@
 .title 
   .make-center-column Gassiper
 .title2  
-  .make-center-column Gassip something ! 
-p.top-page = link_to 'TOPページ', posts_path
+  .make-center-column Comment to Gassip ! 
 .flash
   .alert
     = alert 
 .make-center-column
-  = form_with model: @post , url: posts_path do |form|
+  = form_with model: @comment , url: comments_path do |form|
     = form.hidden_field :user_id, value: current_user.id
+    = form.hidden_field :post_id, value: params[:post_id] 
     .post-input-shell
       = form.text_area :text, class: 'post-input-form'
       = form.submit '投稿', class: 'post-submit'
-
-
-
-/ .post-delete 
-/   = link_to '削除'
-    
+      = link_to '戻る', post_path(@post.id), class: 'post-submit'
