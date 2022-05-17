@@ -7,7 +7,7 @@
       .post-shell
         = simple_format(post.text) 
         .user_info
-          = User.find(post.user_id).name
+          = post.user.name
         .delete-button
           = link_to '削除', post_path(post.id), method: 'delete' 
 
