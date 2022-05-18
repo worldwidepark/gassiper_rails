@@ -1,7 +1,11 @@
 class PostsController < ApplicationController
 
   def index
-      @posts = Post.all
+    @posts = Post.all
+  end
+
+  def new
+    @post = current_user.posts.new()
   end
 
   def create
@@ -9,15 +13,17 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to posts_path
     else
-      redirect_to new_post_path , alert: "投稿失敗！140文字までです。"
-      
+      render new_post_path      
     end
   end
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-    redirect_to posts_path
+    if @post.destroy
+      redirect_to posts_path, notice: "削除に成功しました。"
+    else
+      redirect_to posts_path, alert: "削除に失敗しました。" 
+    end
   end
 
   def edit
@@ -26,6 +32,6 @@ class PostsController < ApplicationController
   private
 
   def post_params    
-    params.permit(:text,:user_id)
+    params.require(:post).permit(:text,:user_id)
   end
 end

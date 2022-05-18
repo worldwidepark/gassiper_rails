@@ -1,6 +1,10 @@
 .title 
   .make-center-column Gassiper
-
+.flash-index
+  .notice
+    = notice
+  .alert
+    = alert 
 .make-center-post 
   - if current_user
     - @posts.each do |post|
@@ -10,7 +14,6 @@
           = post.user.name
         .delete-button
           = link_to '削除', post_path(post.id), method: 'delete' 
-
 - if current_user
   .form-post 
     = link_to 'つぶやき', new_post_path 
@@ -42,6 +45,7 @@ scss:
     text-align: center;
   }
   .make-center-post{
+    margin-top: 15px;
     display: flex;
     justify-content: center; 
     flex-direction: column; 
@@ -86,4 +90,10 @@ scss:
     width: 50px;
     text-align: center;
     border-radius: 5px;
+  }
+  .flash-index{
+    position: absolute;
+    top: 45px;
+    left: 50%;
+    margin-left: -150px ;
   }

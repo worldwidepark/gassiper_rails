@@ -2,14 +2,15 @@
   .make-center-column Gassiper
 .title2  
   .make-center-column Gassip something ! 
-.flash
-  .alert
-    = alert 
+- if @post.errors.any?
+  - @post.errors.full_messages.each do |message| 
+    .errors
+      = message
 .make-center-column
-  = form_with model: @post , url: posts_path do |form|
+  = form_with model: @post  do |form|
     = form.hidden_field :user_id, value: current_user.id
     .post-input-shell
-      = form.text_area :text, class: 'post-input-form'
+      = form.text_area :text, class: 'post-input-form', maxlength: "140", required: true
       = form.submit '投稿', class: 'post-submit'
       = link_to '戻る', posts_path, class: 'post-submit'
 scss:
