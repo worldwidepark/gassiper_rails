@@ -20,9 +20,9 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     if @post.destroy
-      redirect_to posts_path, notice: "削除に成功しました。"
+      redirect_to posts_path, notice: "削除が成功しました。"
     else
-      redirect_to posts_path, alert: "削除に失敗しました。" 
+      redirect_to posts_path, alert: "削除が失敗しました。" 
     end
   end
 
