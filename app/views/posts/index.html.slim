@@ -10,7 +10,7 @@
     - @posts.each do |post|
       .post-shell
         = simple_format(post.text) 
-        .user_info
+        .user-info
           = post.user.name
         .delete-button
           = link_to '削除', post_path(post.id), method: 'delete' 
@@ -71,7 +71,7 @@ scss:
     padding: 30px 30px;
     border-radius: 25px;
   }
-  .user_info{
+  .user-info{
     position: relative;
     top: 25px;
     right: 15px;
