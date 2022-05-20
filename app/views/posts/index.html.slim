@@ -1,12 +1,23 @@
 .title 
   .make-center-column Gassiper
-/ - @posts.each do |post|
-/   div 
-/    = post.email
-
+.flash-index
+  .notice
+    = notice
+  .alert
+    = alert 
+.make-center-post 
+  - if current_user
+    - @posts.each do |post|
+      .post-shell
+        = simple_format(post.text) 
+        .user-info
+          = post.user.name
+        .delete-button
+          = link_to '削除', post_path(post.id), method: 'delete' 
 - if current_user
   .form-post 
-    div つぶやき
+    = link_to 'つぶやき', new_post_path 
+    br
     = link_to current_user.name, registrations_show_path
   .nav.make-center-column 
     = link_to 'Log out', destroy_user_session_path(session[:user_id]), method: 'delete', class: 'nav-button'
@@ -33,6 +44,13 @@ scss:
     font-size: 15px;
     text-align: center;
   }
+  .make-center-post{
+    margin-top: 15px;
+    display: flex;
+    justify-content: center; 
+    flex-direction: column; 
+    align-items: center;
+  }
   .form-post{
     position: fixed;
     top: 50%;
@@ -45,4 +63,37 @@ scss:
     font-weight: 600;
     padding: 5px;
     width: 150px;
+  }
+  .post-shell{
+    margin-top: 10px;
+    width: 400px;
+    background-color: white;
+    padding: 30px 30px;
+    border-radius: 25px;
+  }
+  .user-info{
+    position: relative;
+    top: 25px;
+    right: 15px;
+    font-size:20px;
+    background-color: salmon;
+    width: 100px;
+    text-align: center;
+    border-radius: 15px; 
+  }
+  .delete-button{
+    position: relative;
+    left: 350px;
+    top: 10px;
+    font-size:10px;
+    background-color: orange;
+    width: 50px;
+    text-align: center;
+    border-radius: 5px;
+  }
+  .flash-index{
+    position: absolute;
+    top: 45px;
+    left: 50%;
+    margin-left: -150px ;
   }
