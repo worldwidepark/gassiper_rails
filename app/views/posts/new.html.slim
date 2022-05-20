@@ -15,6 +15,7 @@ p.top-page = link_to 'TOPページ', posts_path
     = form.hidden_field :user_id, value: current_user.id
     .post-input-shell
       = form.text_area :text, class: 'post-input-form', maxlength: "140", required: true
+
       = form.submit '投稿', class: 'post-submit'
 
 
