@@ -47,6 +47,16 @@ body{
   font-size: 1.5em;
   font-weight: bold;
 }
+.errors{
+  margin-top: 5px;
+  text-align: center;
+  color: white;
+  background-color:crimson;
+  border-radius: 25px;
+  border: none; 
+  font-size: 1.0em;
+  font-weight: bold;
+}
 .alert{
   margin-top: 20px;
   text-align: center;
