@@ -6,7 +6,7 @@
     - @posts.each do |post|
       .post-shell
         = link_to simple_format(post.text), post_path(post.id)
-        .user_info
+        .user-info
           = post.user.name
         .delete-button
           = link_to '削除', post_path(post.id), method: 'delete' 
