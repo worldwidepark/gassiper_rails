@@ -10,6 +10,9 @@ p.top-page = link_to 'TOPページ', posts_path
     = alert 
 .deactivate-button
   = link_to '退会', user_registration_path, method: :delete
+
+= image_tag @user.profile_picture
+
 .make-center-column
   .show-form.make-center-column
     .show-form-control

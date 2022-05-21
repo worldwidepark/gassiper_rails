@@ -24,6 +24,7 @@ class Sessions::RegistrationsController < Devise::RegistrationsController
   end
 
   def show
+    @user = User.find(current_user.id)
   end
 
   def update
@@ -43,7 +44,7 @@ class Sessions::RegistrationsController < Devise::RegistrationsController
   private
 
   def user_params
-    params.permit(:name,:introduce)
+    params.permit(:name,:introduce,:profile_picture)
   end
 
   def configure_account_update_parameters
