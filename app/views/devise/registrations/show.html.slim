@@ -11,9 +11,10 @@ p.top-page = link_to 'TOPページ', posts_path
 .deactivate-button
   = link_to '退会', user_registration_path, method: :delete
 
-= image_tag @user.profile_picture
-
 .make-center-column
+  = image_tag @user.profile_picture.variant(gravity: :center, 
+                                            resize: "100x100^", 
+                                            crop: "90x90+0+0").processed, class: "image"  
   .show-form.make-center-column
     .show-form-control
       .show-label お名前
@@ -74,3 +75,11 @@ scss:
   .show-introduce{
     font-size: 15px;
   } 
+  .image{
+    position: relative;
+    top: 5px;
+    border-radius: 50px;
+    width:100px;
+    height: 100px;
+    z-index: 1;
+  }
