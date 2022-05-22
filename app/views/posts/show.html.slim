@@ -23,7 +23,7 @@ p.top-page = link_to 'TOPページ', posts_path
 
 
 .form-post 
-    = link_to 'Comment', new_post_comment_path(post_id: @post.id)
+    = link_to 'Comment', new_post_comment_path(@post.id)
 
 scss: 
   .make-big-font{
