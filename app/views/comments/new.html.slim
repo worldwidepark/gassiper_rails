@@ -8,7 +8,7 @@
       = message
 
 .make-center-column
-  = form_with model: @comment , url: comments_path do |form|
+  = form_with model: @comment , url: post_comments_path do |form|
     = form.hidden_field :user_id, value: current_user.id
     = form.hidden_field :post_id, value: @post.id
     .post-input-shell
