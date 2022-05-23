@@ -11,10 +11,14 @@ p.top-page = link_to 'TOPページ', posts_path
 .deactivate-button
   = link_to '退会', user_registration_path, method: :delete
 
+- if @user.profile_picture.attached?
+  .make-center-column
+    = image_tag @user.profile_picture.variant(gravity: :center, resize: "100x100^", crop: "90x90+0+0").processed, class: "image"  
+- else
+  .make-center-column
+    .empty-pic.image 
+      div no picture
 .make-center-column
-  = image_tag @user.profile_picture.variant(gravity: :center, 
-                                            resize: "100x100^", 
-                                            crop: "90x90+0+0").processed, class: "image"  
   .show-form.make-center-column
     .show-form-control
       .show-label お名前
@@ -24,10 +28,10 @@ p.top-page = link_to 'TOPページ', posts_path
       .show-label 自己紹介
       .show-introduce 
         = @user.introduce
-    
-  .show-button
-      .form-button  
-        = link_to '編集', edit_user_registration_path, class: 'form-button'
+  - if current_user.id == @user.id
+    .show-button
+        .form-button  
+          = link_to '編集', edit_user_registration_path, class: 'form-button'
 
 scss: 
   .deactivate-button{
@@ -82,4 +86,10 @@ scss:
     width:100px;
     height: 100px;
     z-index: 1;
+  }
+  .empty-pic{
+    background-color: salmon;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
   }

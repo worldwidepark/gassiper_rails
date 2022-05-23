@@ -14,7 +14,7 @@ class Sessions::RegistrationsController < Devise::RegistrationsController
       else
         set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
         expire_data_after_sign_in!
-        redirect_to new_user_registration_path
+        redirect_to new_user_registration_path(user_id: current_user.id)
       end
     else
       clean_up_passwords resource
@@ -24,14 +24,14 @@ class Sessions::RegistrationsController < Devise::RegistrationsController
   end
 
   def show
-    @user = User.find(current_user.id)
+    @user = User.find(params[:user_id])
   end
 
   def update
     if !@user.update(user_params)
-      redirect_to registrations_show_path, alert: "更新に失敗しました。" 
+      redirect_to registrations_show_path(user_id: current_user.id), alert: "更新に失敗しました。" 
     else
-      redirect_to registrations_show_path, notice: "更新が完了しました。"
+      redirect_to registrations_show_path(user_id: current_user.id), notice: "更新が完了しました。"
     end
   end
 

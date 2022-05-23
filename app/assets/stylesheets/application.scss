@@ -90,7 +90,20 @@ a{
 a:visited{
   color: black;
 }
-
+.image{
+  position: relative;
+  top: 5px;
+  border-radius: 50px;
+  width:100px;
+  height: 100px;
+  z-index: 1;
+}
+.empty-pic{
+  background-color: salmon;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
  @import "form";
  @import "post";
 

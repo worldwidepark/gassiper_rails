@@ -8,17 +8,26 @@
 .make-center-post 
   - if current_user
     - @posts.each do |post|
-      .post-shell
-        = link_to simple_format(post.text), post_path(post.id)
-        .user-info
-          = post.user.name
-        .delete-button
-          = link_to '削除', post_path(post.id), method: 'delete' 
+      .post
+        - if  post.user.profile_picture.attached?
+          .user-info
+            = image_tag post.user.profile_picture.variant(gravity: :center, resize: "100x100^", crop: "90x90+0+0").processed, class: "image"  
+            .user-info-name
+              = link_to post.user.name, registrations_show_path(user_id: post.user.id)
+        - else  
+          .empty-pic.image 
+            div no picture
+            .user-info-name
+              = post.user.name        
+        .post-shell
+          = link_to simple_format(post.text), post_path(post.id) 
+          .delete-button
+            = link_to '削除', post_path(post.id), method: 'delete'
 - if current_user
   .form-post 
     = link_to 'つぶやき', new_post_path 
     br
-    = link_to current_user.name, registrations_show_path
+    = link_to current_user.name, registrations_show_path(user_id: current_user.id)
   .nav.make-center-column 
     = link_to 'Log out', destroy_user_session_path(session[:user_id]), method: 'delete', class: 'nav-button'
 - else
@@ -32,3 +41,4 @@ scss:
     left: 50%;
     margin-left: -150px ;
   }
+
