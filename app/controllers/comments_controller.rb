@@ -6,11 +6,11 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(post_params)
-    @post= @comment.post
     if @comment.save
       redirect_to post_path(@comment.post_id), notice: "コメントが作成されました。"
     else
-      render 'comments/new.html.slim'
+      @post= @comment.post
+      render :new
     end
   end
 
