@@ -13,7 +13,8 @@ Rails.application.routes.draw do
     get "/registrations/show" => "sessions/registrations#show"
     # patch "/registrations/patch" => "sessions/registrations#update"
     end
-  resources :posts , only: [:index, :create, :edit, :new, :destroy]
-  
+  resources :posts , only: [:index, :new, :create,:show, :destroy] do
+    resources :comments , only: [:new, :create, :destroy]
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

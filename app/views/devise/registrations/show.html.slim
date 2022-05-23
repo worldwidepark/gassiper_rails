@@ -2,6 +2,7 @@
   .make-center-column Gassiper
 .title2  
   .make-center-column Profile
+p.top-page = link_to 'TOPページ', posts_path
 .flash
   .notice
     = notice
@@ -23,8 +24,6 @@
   .show-button
       .form-button  
         = link_to '編集', edit_user_registration_path, class: 'form-button'
-      .form-button  
-        = link_to '戻る', posts_path, class: 'form-button'
 
 scss: 
   .deactivate-button{

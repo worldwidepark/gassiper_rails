@@ -79,6 +79,10 @@ body{
   font-weight: bold;
   width: 300px; 
 }
+.top-page{
+  margin-left: 10px;
+  font-size: 12px;
+}
 a{
   text-decoration: none;
   color: black;
@@ -88,3 +92,5 @@ a:visited{
 }
 
  @import "form";
+ @import "post";
+
