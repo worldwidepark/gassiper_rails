@@ -15,10 +15,10 @@
             .user-info-name
               = link_to post.user.name, registrations_show_path(user_id: post.user.id)
         - else  
-          .empty-pic.image 
-            div no picture
-            .user-info-name
-              = post.user.name        
+          .user-info
+            .empty-pic no picture
+            .user-info-name 
+              = link_to post.user.name, registrations_show_path(user_id: post.user.id)
         .post-shell
           = link_to simple_format(post.text), post_path(post.id) 
           .delete-button

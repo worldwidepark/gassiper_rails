@@ -104,10 +104,15 @@ a:visited{
   z-index: 1;
 }
 .empty-pic{
-  background-color: salmon;
+  background-color: gray;
   display: flex;
   align-items: center;
   justify-content: center; 
+  position: relative;
+  border-radius: 50px;
+  width:100px;
+  height: 100px;
+  z-index: 1;
 }
  @import "form";
  @import "post";
