@@ -12,7 +12,7 @@ class Sessions::SessionsController < Devise::SessionsController
     end
   end
 
-private
+  private
 
   def deleted_flag
     @user = User.find_by(email: params[:user][:email])

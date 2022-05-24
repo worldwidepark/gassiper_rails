@@ -44,7 +44,7 @@ class Sessions::RegistrationsController < Devise::RegistrationsController
   private
 
   def user_params
-    params.permit(:name,:introduce,:profile_picture)
+    params.permit(:name, :introduce, :profile_picture)
   end
 
   def configure_account_update_parameters

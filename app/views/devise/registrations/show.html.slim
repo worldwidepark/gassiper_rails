@@ -2,14 +2,17 @@
   .make-center-column Gassiper
 .title2  
   .make-center-column Profile
-p.top-page = link_to 'TOPページ', posts_path
+.top-nav
+  .top-page = link_to 'TOPページ', posts_path
+  .go-post-show 
+    - if params[:post_id]
+      = link_to 'Postへ戻る', post_path(params[:post_id])
+
 .flash
   .notice
     = notice
   .alert
     = alert 
-.deactivate-button
-  = link_to '退会', user_registration_path, method: :delete
 
 - if @user.profile_picture.attached?
   .make-center-column
@@ -32,6 +35,8 @@ p.top-page = link_to 'TOPページ', posts_path
     .show-button
         .form-button  
           = link_to '編集', edit_user_registration_path, class: 'form-button'
+    .deactivate-button
+      = link_to '退会', user_registration_path, method: :delete
 
 scss: 
   .deactivate-button{
@@ -59,9 +64,7 @@ scss:
     margin: 20px 0px;
     position: relative;
     top: 15px;
-  
     word-break:break-all;
-
   }
   .show-label{
     position: relative;
@@ -79,17 +82,7 @@ scss:
   .show-introduce{
     font-size: 15px;
   } 
-  .image{
-    position: relative;
-    top: 5px;
-    border-radius: 50px;
-    width:100px;
-    height: 100px;
-    z-index: 1;
-  }
-  .empty-pic{
-    background-color: salmon;
-    display: flex;
-    align-items: center;
-    justify-content: center; 
+  .go-post-show{
+    margin-left: 10px;
+    font-size: 12px;
   }

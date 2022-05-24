@@ -79,6 +79,11 @@ body{
   font-weight: bold;
   width: 300px; 
 }
+.top-nav{
+  display: flex;
+  flex-direction: row;  
+  margin-top: 10px;
+}
 .top-page{
   margin-left: 10px;
   font-size: 12px;
