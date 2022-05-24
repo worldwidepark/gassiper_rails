@@ -19,7 +19,7 @@
     = image_tag @user.profile_picture.variant(gravity: :center, resize: "100x100^", crop: "90x90+0+0").processed, class: "image"  
 - else
   .make-center-column
-    .empty-pic.image 
+    .empty-pic
       div no picture
 .make-center-column
   .show-form.make-center-column
