@@ -21,9 +21,9 @@
               = link_to post.user.name, registrations_show_path(user_id: post.user.id)
         .post-shell
           = link_to simple_format(post.text), post_path(post.id) 
-          - if post.user.id == current_user.id
-            .delete-button
-              = link_to '削除', post_path(post.id), method: 'delete'
+        - if post.user.id == current_user.id
+          .delete-button
+            = link_to '削除', post_path(post.id), method: 'delete'
 - if current_user
   .form-post 
     = link_to 'つぶやき', new_post_path 

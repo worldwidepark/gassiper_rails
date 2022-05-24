@@ -15,13 +15,13 @@ p.top-page = link_to 'TOPページ', posts_path
       .user-info
         = image_tag @post.user.profile_picture.variant(gravity: :center, resize: "100x100^", crop: "90x90+0+0").processed, class: "image"  
         .user-info-name
-          = link_to @post.user.name, registrations_show_path(user_id: @post.user.id, post_id: @post.id)
-          
+          = link_to @post.user.name, registrations_show_path(user_id: @post.user.id, post_id: @post.id)        
     - else  
-      .user-info.empty-pic.image 
-        div no picture
+      .user-info
+        .empty-pic
+          div no picture
         .user-info-name
-          = @post.user.name   
+          = link_to @post.user.name, registrations_show_path(user_id: @post.user.id, post_id: @post.id)        
     .post-shell.make-big-font
       = simple_format(@post.text)
   h3 Comments

@@ -27,6 +27,10 @@ class Sessions::RegistrationsController < Devise::RegistrationsController
     @user = User.find(params[:user_id])
   end
 
+  def edit_pic
+    render :edit_pic
+  end
+
   def update
     if !@user.update(user_params)
       redirect_to registrations_show_path(user_id: current_user.id), alert: "更新に失敗しました。" 
