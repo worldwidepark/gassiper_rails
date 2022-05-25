@@ -23,20 +23,8 @@ class Sessions::RegistrationsController < Devise::RegistrationsController
     end
   end
 
-  def show
-    @user = User.find(params[:user_id])
-  end
-
-  def edit_pic
-    render :edit_pic
-  end
-
-  def update
-    if !@user.update(user_params)
-      redirect_to registrations_show_path(user_id: current_user.id), alert: "更新に失敗しました。" 
-    else
-      redirect_to registrations_show_path(user_id: current_user.id), notice: "更新が完了しました。"
-    end
+  def edit
+  
   end
 
   def destroy
@@ -47,12 +35,9 @@ class Sessions::RegistrationsController < Devise::RegistrationsController
   
   private
 
-  def user_params
-    params.permit(:name, :introduce, :profile_picture)
-  end
 
   def configure_account_update_parameters
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :introduce, :deleted_flag])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :introduce, :profile_picture, :deleted_flag])
   end
 
   def user_find

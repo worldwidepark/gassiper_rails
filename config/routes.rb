@@ -11,9 +11,9 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     get "/registrations/show" => "sessions/registrations#show"
-    get "/registrations/edit_pic" => "sessions/registrations#edit_pic"
     # patch "/registrations/patch" => "sessions/registrations#update"
     end
+  resources :users , only: [:show, :update]
   resources :posts , only: [:index, :new, :create,:show, :destroy] do
     resources :comments , only: [:new, :create, :destroy]
   end

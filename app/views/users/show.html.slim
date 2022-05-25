@@ -14,7 +14,6 @@
   .alert
     = alert 
 
-
 .make-center-column
   .show-form.make-center-column
     .show-form-control
@@ -25,28 +24,18 @@
       .show-label 自己紹介
       .show-introduce 
         = @user.introduce
-  - if current_user.id == @user.id
+  .place-of-pic
     - if @user.profile_picture.attached?
-      .make-center-column
-        = link_to (image_tag @user.profile_picture.variant(gravity: :center, resize: "100x100^", crop: "90x90+0+0").processed, class: "image"), registrations_edit_pic_path
+      = image_tag @user.profile_picture.variant(gravity: :center, resize: "100x100^", crop: "90x90+0+0").processed, class: "image"
     - else
-      .make-center-column
-        .empty-pic
-          = link_to "no picture", registrations_edit_pic_path
+      .empty-pic no picture
+  - if current_user.id == @user.id
     .show-button
         .form-button  
           = link_to '編集', edit_user_registration_path, class: 'form-button'
     .deactivate-button
       = link_to '退会', user_registration_path, method: :delete
-  - else
-    - if @user.profile_picture.attached?
-      .make-center-column
-        = image_tag @user.profile_picture.variant(gravity: :center, resize: "100x100^", crop: "90x90+0+0").processed, class: "image"
-    - else
-      .make-center-column
-        .empty-pic
-          div no picture
-
+  
 scss: 
   .deactivate-button{
     position: fixed;
@@ -95,3 +84,8 @@ scss:
     margin-left: 10px;
     font-size: 12px;
   }
+  .place-of-pic{
+    position: relative;
+    top: 20px;  
+  }
+  
