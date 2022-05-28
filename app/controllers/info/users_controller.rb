@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Info::UsersController < ApplicationController
   before_action :user_find
   def show
     @user = User.find(params[:id])
@@ -6,9 +6,9 @@ class UsersController < ApplicationController
 
   def update
     if !@user.update(user_params)
-      redirect_to user_path(current_user.id), alert: "更新に失敗しました。" 
+      redirect_to info_user_path(current_user.id), alert: "更新に失敗しました。" 
     else
-      redirect_to user_path(current_user.id), notice: "更新が完了しました。"
+      redirect_to info_user_path(current_user.id), notice: "更新に成功しました。" 
     end
   end
 

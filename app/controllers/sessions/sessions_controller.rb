@@ -1,5 +1,6 @@
 class Sessions::SessionsController < Devise::SessionsController
 
+
   def create
     if deleted_flag
       redirect_to new_user_session_path, alert: "退会になられたアカウントです。" 
@@ -10,6 +11,11 @@ class Sessions::SessionsController < Devise::SessionsController
       yield resource if block_given?
       redirect_to after_sign_in_path_for(resource)
     end
+  end
+
+  def destroy
+    signed_out = (Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name))
+    redirect_to posts_path
   end
 
   private

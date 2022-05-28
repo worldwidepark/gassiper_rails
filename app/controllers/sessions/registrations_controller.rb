@@ -23,10 +23,6 @@ class Sessions::RegistrationsController < Devise::RegistrationsController
     end
   end
 
-  def edit
-  
-  end
-
   def destroy
     @user.update(deleted_flag: true)
     sign_out(@user)

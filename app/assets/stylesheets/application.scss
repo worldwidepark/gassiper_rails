@@ -95,14 +95,6 @@ a{
 a:visited{
   color: black;
 }
-.image{
-  position: relative;
-  top: 5px;
-  border-radius: 50px;
-  width:100px;
-  height: 100px;
-  z-index: 1;
-}
 .empty-pic{
   background-color: gray;
   display: flex;
@@ -112,6 +104,27 @@ a:visited{
   width:100px;
   height: 100px;
   z-index: 1;
+}
+.image{
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  border-radius: 50px;
+  z-index: 1;
+}
+.upload-image{
+  position: relative;
+  width: 200px;
+  height: 200px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  border-radius: 100px;
+  z-index: 1;
+  top: -10px;
 }
  @import "form";
  @import "post";

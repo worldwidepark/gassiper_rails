@@ -51,15 +51,19 @@
   border-radius: 25px;
   word-break:break-all;
 }
-.delete-button{
+.place-delete-button{
   position: absolute;
   left: 500px;
   top: 70%;
+}
+.delete-button{
   font-size:10px;
   background-color: orange;
   width: 50px;
   text-align: center;
   border-radius: 5px;
+  border :none
+
 }
 .post-input-shell{
   width: 500px;

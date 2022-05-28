@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-
+  protect_from_forgery :except => [:destroy]
   def index
     @posts = Post.all
   end

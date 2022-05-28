@@ -17,7 +17,7 @@ p.top-page = link_to 'TOPページ', posts_path
       - else  
         .empty-pic no picture
       .user-info-name
-        = link_to @post.user.name, user_path(id: @post.user.id, post_id: @post.id)        
+        = link_to @post.user.name, info_user_path(id: @post.user.id, post_id: @post.id)        
     .post-shell.make-big-font
       = simple_format(@post.text)
   h3 Comments
