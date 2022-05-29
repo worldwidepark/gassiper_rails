@@ -1,38 +1,38 @@
-.title 
+.title
   .make-center-column Gassiper
 .flash-index
   .notice
     = notice
   .alert
-    = alert 
-.make-center-post 
+    = alert
+.make-center-post
   - if current_user
     - @posts.each do |post|
       .post
         .user-info
-          - if  post.user.profile_picture.attached?   
-            = image_tag post.user.profile_picture.variant(gravity: :center, resize: "100x100^", crop: "90x90+0+0").processed, class: "image"  
-          - else  
+          - if  post.user.profile_picture.attached?
+            = image_tag post.user.profile_picture.variant(gravity: :center, resize: "100x100^", crop: "90x90+0+0").processed, class: "image"
+          - else
             .empty-pic no picture
-          .user-info-name 
+          .user-info-name
             = link_to post.user.name, info_user_path(post.user.id)
         .post-shell
-          = link_to simple_format(post.text), post_path(post.id) 
+          = link_to simple_format(post.text), post_path(post.id)
         - if post.user.id == current_user.id
           .place-delete-button
             = button_to '削除', post_path(post.id), method: 'delete', class: 'delete-button'
 - if current_user
-  .form-post 
-    = link_to 'つぶやき', new_post_path 
+  .form-post
+    = link_to 'つぶやき', new_post_path
     br
-    = link_to current_user.name, info_user_path(current_user.id)
-  .nav.make-center-column 
-    = button_to 'Log out', destroy_user_session_path(current_user.id), method: :delete, class: 'nav-button'
+    = link_to current_user.name, info_user_path(current_user)
+  .nav.make-center-column
+    = button_to 'Log out', destroy_user_session_path(current_user), method: :delete, class: 'nav-button'
 - else
   .nav.make-center-column
     = button_to 'Log in', new_user_session_path, class: 'nav-button', method: :get
 
-scss: 
+scss:
  .flash-index{
     position: absolute;
     top: 45px;

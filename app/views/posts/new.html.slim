@@ -1,13 +1,13 @@
-.title 
+.title
   .make-center-column Gassiper
-.title2  
-  .make-center-column Gassip something ! 
+.title2
+  .make-center-column Gassip something !
 p.top-page = link_to 'TOPページ', posts_path
 .flash
   .alert
-    = alert 
+    = alert
 - if @post.errors.any?
-  - @post.errors.full_messages.each do |message| 
+  - @post.errors.full_messages.each do |message|
     .errors
       = message
 .make-center-column
@@ -17,5 +17,3 @@ p.top-page = link_to 'TOPページ', posts_path
       = form.text_area :text, class: 'post-input-form', maxlength: "140", required: true
 
       = form.submit '投稿', class: 'post-submit'
-
-

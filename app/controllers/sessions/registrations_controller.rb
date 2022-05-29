@@ -1,7 +1,6 @@
 class Sessions::RegistrationsController < Devise::RegistrationsController
   before_action :configure_account_update_parameters
-  before_action :user_find
-  
+
   def create
     build_resource(sign_up_params)
     resource.save
@@ -24,22 +23,15 @@ class Sessions::RegistrationsController < Devise::RegistrationsController
   end
 
   def destroy
-    @user.update(deleted_flag: true)
-    sign_out(@user)
+    current_user.update(deleted_flag: true)
+    sign_out(current_user)
     redirect_to posts_path
   end
-  
-  private
 
+  private
 
   def configure_account_update_parameters
     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :introduce, :profile_picture, :deleted_flag])
-  end
-
-  def user_find
-    if current_user
-      @user = User.find(current_user.id)    
-    end
   end
 
 end
