@@ -1,15 +1,19 @@
-.title 
+.title
   .make-center-column Gassiper
-.title2  
+.title2
   .make-center-column Profile
-p.top-page = link_to 'TOPページ', posts_path
+.top-nav
+  .top-page = link_to 'TOPページ', posts_path
+  .go-post-show
+    - if params[:post_id]
+      = link_to 'Postへ戻る', post_path(params[:post_id])
+
 .flash
   .notice
     = notice
   .alert
-    = alert 
-.deactivate-button
-  = link_to '退会', user_registration_path, method: :delete
+    = alert
+
 .make-center-column
   .show-form.make-center-column
     .show-form-control
@@ -18,22 +22,32 @@ p.top-page = link_to 'TOPページ', posts_path
         = @user.name
     .show-form-control
       .show-label 自己紹介
-      .show-introduce 
+      .show-introduce
         = @user.introduce
-    
-  .show-button
-      .form-button  
-        = link_to '編集', edit_user_registration_path, class: 'form-button'
+  .place-of-pic
+    - if @user.profile_picture.attached?
+      = image_tag @user.profile_picture, class: "image"
+    - else
+      .empty-pic no picture
+  - if current_user.id == @user.id
+    .show-button
+        .form-button
+          = link_to '編集', edit_user_registration_path, class: 'form-button'
+    .place-deactivate-button
+      = button_to '退会', user_registration_path, method: :delete, class: 'deactivate-button'
 
-scss: 
-  .deactivate-button{
+scss:
+  .place-deactivate-button{
     position: fixed;
     top: 120px;
     left: 90%;
+  }
+  .deactivate-button{
     background-color: salmon;
     text-align: center;
     width: 70px;
     border-radius: 10px;
+    border: none;
   }
   .show-form{
     height: 400px;
@@ -51,18 +65,16 @@ scss:
     margin: 20px 0px;
     position: relative;
     top: 15px;
-  
     word-break:break-all;
-
   }
   .show-label{
     position: relative;
-    font-weight: bold; 
+    font-weight: bold;
     top: -30px;
   }
   .show-name{
     margin: 10px 0 ;
-    font-size: 20px;   
+    font-size: 20px;
   }
   .show-button{
     position: fixed;
@@ -70,4 +82,12 @@ scss:
   }
   .show-introduce{
     font-size: 15px;
-  } 
+  }
+  .go-post-show{
+    margin-left: 10px;
+    font-size: 12px;
+  }
+  .place-of-pic{
+    position: relative;
+    top: 20px;
+  }

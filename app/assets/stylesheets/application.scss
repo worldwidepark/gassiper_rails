@@ -13,84 +13,118 @@
  *= require_tree .
  *= require_self
  */
-body{
+body {
   background-color: antiquewhite;
   display: flex;
-  justify-content: center; 
-  flex-direction: column; 
+  justify-content: center;
+  flex-direction: column;
 }
-.make-center-column{
+.make-center-column {
   display: flex;
-  justify-content: center; 
-  flex-direction: column; 
+  justify-content: center;
+  flex-direction: column;
   align-items: center;
   text-align: center;
 }
-.flash{
+.flash {
   position: absolute;
-  top: 100px;
+  top: 95px;
   left: 50%;
-  margin-left: -150px ;
+  margin-left: -150px;
 }
-.title{
-  background-color:aqua;
+.title {
+  background-color: aqua;
   border-radius: 25px;
-  border: none; 
+  border: none;
   margin: 5px;
   font-size: 2em;
   font-weight: bold;
 }
-.title2{
-  background-color:skyblue;
+.title2 {
+  background-color: skyblue;
   border-radius: 25px;
-  border: none; 
+  border: none;
   font-size: 1.5em;
   font-weight: bold;
 }
-.errors{
+.errors {
   margin-top: 5px;
   text-align: center;
   color: white;
-  background-color:crimson;
+  background-color: crimson;
   border-radius: 25px;
-  border: none; 
-  font-size: 1.0em;
+  border: none;
+  font-size: 1em;
   font-weight: bold;
 }
-.alert{
+.alert {
   margin-top: 20px;
   text-align: center;
   color: white;
-  background-color:crimson;
+  background-color: crimson;
   border-radius: 25px;
-  border: none; 
-  font-size: 1.0em;
+  border: none;
+  font-size: 1em;
   font-weight: bold;
-  width: 300px; 
+  width: 300px;
 }
-.notice{
+.notice {
   margin-top: 20px;
   text-align: center;
   color: white;
-  background-color:blue;
+  background-color: blue;
   border-radius: 25px;
-  border: none; 
-  font-size: 1.0em;
+  border: none;
+  font-size: 1em;
   font-weight: bold;
-  width: 300px; 
+  width: 300px;
 }
-.top-page{
+.top-nav {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+}
+.top-page {
   margin-left: 10px;
   font-size: 12px;
 }
-a{
+a {
   text-decoration: none;
   color: black;
 }
-a:visited{
+a:visited {
   color: black;
 }
-
- @import "form";
- @import "post";
-
+.empty-pic {
+  background-color: gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  width: 100px;
+  height: 100px;
+  z-index: 1;
+}
+.image {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  border-radius: 50px;
+  z-index: 1;
+}
+.upload-image {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  border-radius: 100px;
+  z-index: 1;
+  top: -10px;
+}
+@import "form";
+@import "post";
