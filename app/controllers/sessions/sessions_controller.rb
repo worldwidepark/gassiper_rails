@@ -1,6 +1,5 @@
 class Sessions::SessionsController < Devise::SessionsController
 
-
   def create
     if deleted_flag
       redirect_to new_user_session_path, alert: "退会になられたアカウントです。"

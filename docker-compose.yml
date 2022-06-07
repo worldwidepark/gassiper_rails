@@ -1,17 +1,19 @@
-version: '3'
+version: "3"
 
 volumes:
   db-data:
+  gem_data:
 
 services:
   web:
     build: .
     command: /bin/sh -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     ports:
-      - '3000:3000'
-    container_name: 'web'
+      - "3000:3000"
+    container_name: "web"
     volumes:
-      - '.:/gassiper_rails'
+      - ".:/gassiper_rails"
+      - gem_data:/usr/local/bundle
     tty: true
     stdin_open: true
     depends_on:
@@ -21,14 +23,12 @@ services:
 
   db:
     image: mysql:8
-    container_name: 'db_mysql'
+    container_name: "db_mysql"
 
     volumes:
-      - 'db-data:/var/lib/mysql'
+      - "db-data:/var/lib/mysql"
     environment:
-      - 'MYSQL_ROOT_PASSWORD=password'
-      - 'TZ=Asia/Tokyo'
+      - "MYSQL_ROOT_PASSWORD=password"
+      - "TZ=Asia/Tokyo"
     ports:
       - 3306:3306
-
-
