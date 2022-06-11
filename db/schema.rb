@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2022_06_09_150432) do
-=======
-ActiveRecord::Schema.define(version: 2022_05_17_135028) do
->>>>>>> origin/comment
 
   create_table "comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "text"
@@ -45,11 +41,8 @@ ActiveRecord::Schema.define(version: 2022_05_17_135028) do
     t.text "introduce"
     t.boolean "deleted_flag", default: false
     t.string "image_name"
-<<<<<<< HEAD
     t.string "uid"
     t.string "provider"
-=======
->>>>>>> origin/comment
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
