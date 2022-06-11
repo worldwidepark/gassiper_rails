@@ -1,0 +1,25 @@
+.title 
+  .make-center-column Welcome to Gassiper
+.title2  
+  .make-center-column Sign up  
+
+.make-center-column  
+  = render "devise/shared/error_messages", resource: resource
+.form-input.make-center-column
+  = form_with model: resource, as: resource_name, url: user_registration_path(resource_name) do |form|
+    .form-control
+      = form.label :email
+      = form.text_field :email, value: @user.email
+    .form-control  
+      = form.label :password
+      = form.text_field :password
+    .form-control
+      = form.label :password_confirmation
+      = form.text_field :password_confirmation
+    .form-control 
+      = form.label :name
+      = form.text_field :name, value: @user.name
+
+    = form.submit 'Sign up', class: 'form-button'
+     
+  = link_to 'Back', new_user_session_path, class: 'form-button'

@@ -1,0 +1,96 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+body{
+  background-color: antiquewhite;
+  display: flex;
+  justify-content: center; 
+  flex-direction: column; 
+}
+.make-center-column{
+  display: flex;
+  justify-content: center; 
+  flex-direction: column; 
+  align-items: center;
+  text-align: center;
+}
+.flash{
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  margin-left: -150px ;
+}
+.title{
+  background-color:aqua;
+  border-radius: 25px;
+  border: none; 
+  margin: 5px;
+  font-size: 2em;
+  font-weight: bold;
+}
+.title2{
+  background-color:skyblue;
+  border-radius: 25px;
+  border: none; 
+  font-size: 1.5em;
+  font-weight: bold;
+}
+.errors{
+  margin-top: 5px;
+  text-align: center;
+  color: white;
+  background-color:crimson;
+  border-radius: 25px;
+  border: none; 
+  font-size: 1.0em;
+  font-weight: bold;
+}
+.alert{
+  margin-top: 20px;
+  text-align: center;
+  color: white;
+  background-color:crimson;
+  border-radius: 25px;
+  border: none; 
+  font-size: 1.0em;
+  font-weight: bold;
+  width: 300px; 
+}
+.notice{
+  margin-top: 20px;
+  text-align: center;
+  color: white;
+  background-color:blue;
+  border-radius: 25px;
+  border: none; 
+  font-size: 1.0em;
+  font-weight: bold;
+  width: 300px; 
+}
+.top-page{
+  margin-left: 10px;
+  font-size: 12px;
+}
+a{
+  text-decoration: none;
+  color: black;
+}
+a:visited{
+  color: black;
+}
+
+ @import "form";
+ @import "post";
+

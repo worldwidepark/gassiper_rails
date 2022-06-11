@@ -1,0 +1,17 @@
+.title
+  .make-center-column Gassiper
+.title2  
+  .make-center-column Edit profile
+
+.form-input.make-center-column 
+  = form_with modle: resource, as: resource_name, url: user_registration_path(resource_name), method: :patch do |user|
+    .form-control
+      = user.label "お名前"
+      = user.text_field :name, value: current_user.name
+    .form-control
+      = user.label "自己紹介"    
+      = user.text_area :introduce, value: current_user.introduce 
+  
+    = user.submit '編集', class: 'form-button'
+  
+  = link_to '戻る', registrations_show_path, class: 'form-button'

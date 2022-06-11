@@ -1,0 +1,58 @@
+.title 
+  .make-center-column Gassiper
+.title2  
+  .make-center-column 
+    = "#{@post.user.name}'s gassip"
+p.top-page = link_to 'TOPページ', posts_path
+
+.flash
+  .notice
+    = notice
+
+.make-center-post 
+  .post-shell.make-big-font
+    = simple_format(@post.text)
+  .user-name-post
+    = @post.user.name
+  h3 Comments
+  - @comments.each do |comment|
+    .comment-shell
+      = simple_format(comment.text)
+    .user-name-comment
+      = comment.user.name 
+
+
+.form-post 
+    = link_to 'Comment', new_post_comment_path(@post.id)
+
+scss: 
+  .make-big-font{
+    font-size: 25px;
+    margin-top: 50px;
+  }
+  .comment-shell{
+    width: 300px;
+    background-color: white;
+    padding: 5px 5px;
+    border-radius: 5px;
+    word-break:break-all;
+  }
+  .user-name-post{
+    position: relative;
+    top: -30px;
+    right: 300px;
+    background-color: pink;
+    padding: 5px;
+    color: green;
+    border-radius: 5px;
+  }
+  .user-name-comment{
+    position: relative;
+    top: -30px;
+    right: 200px;
+    background-color: green;
+    padding: 5px;
+    color: pink;
+    font-size: 10px;
+    border-radius: 5px; 
+  }
