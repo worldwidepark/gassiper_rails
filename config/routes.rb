@@ -4,18 +4,15 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => {
     :omniauth_callbacks => "users/omniauth_callbacks",
-    :confirmations => 'users/confirmations',
-    :sessions => 'sessions/sessions',
-    :passwords => 'users/passwords' ,
-    :registrations => 'sessions/registrations'
+    :registrations => 'sessions/registrations',
+    :sessions => 'sessions/sessions'
   }
 
-  devise_scope :user do
-    get "/registrations/show" => "sessions/registrations#show"
-    # patch "/registrations/patch" => "sessions/registrations#update"
-    end
+  namespace :info do
+    resources :users , only: [:show, :update]
+  end
+
   resources :posts , only: [:index, :new, :create,:show, :destroy] do
     resources :comments , only: [:new, :create, :destroy]
   end
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

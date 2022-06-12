@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 GIT
   remote: https://github.com/omniauth/omniauth-github.git
   revision: d2d9e01d4ea3f99bad94edaf0da6ac1237d3c949
@@ -8,8 +7,6 @@ GIT
       omniauth (~> 2.0)
       omniauth-oauth2 (~> 1.7.1)
 
-=======
->>>>>>> origin/comment
 GEM
   remote: https://rubygems.org/
   specs:
@@ -99,7 +96,6 @@ GEM
       responders
       warden (~> 1.2.3)
     erubi (1.10.0)
-<<<<<<< HEAD
     faraday (2.3.0)
       faraday-net_http (~> 2.0)
       ruby2_keywords (>= 0.0.4)
@@ -108,23 +104,18 @@ GEM
     globalid (1.0.0)
       activesupport (>= 5.0)
     hashie (5.0.0)
-=======
-    ffi (1.15.5)
-    globalid (1.0.0)
-      activesupport (>= 5.0)
->>>>>>> origin/comment
     hpricot (0.8.6)
     html2slim (0.2.0)
       hpricot
     i18n (1.10.0)
       concurrent-ruby (~> 1.0)
+    image_processing (1.12.2)
+      mini_magick (>= 4.9.5, < 5)
+      ruby-vips (>= 2.0.17, < 3)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
-<<<<<<< HEAD
     jwt (2.4.1)
-=======
->>>>>>> origin/comment
     listen (3.7.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -136,21 +127,18 @@ GEM
     marcel (1.0.2)
     matrix (0.4.2)
     method_source (1.0.0)
+    mini_magick (4.11.0)
     mini_mime (1.1.2)
     mini_portile2 (2.8.0)
     minitest (5.15.0)
     msgpack (1.5.1)
-<<<<<<< HEAD
     multi_json (1.15.0)
     multi_xml (0.6.0)
-=======
->>>>>>> origin/comment
     mysql2 (0.5.3)
     nio4r (2.5.8)
     nokogiri (1.13.4)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
-<<<<<<< HEAD
     oauth2 (1.4.9)
       faraday (>= 0.17.3, < 3.0)
       jwt (>= 1.0, < 3.0)
@@ -167,8 +155,6 @@ GEM
     omniauth-rails_csrf_protection (1.0.1)
       actionpack (>= 4.2)
       omniauth (~> 2.0)
-=======
->>>>>>> origin/comment
     orm_adapter (0.5.0)
     public_suffix (4.0.7)
     puma (5.6.4)
@@ -177,11 +163,8 @@ GEM
     rack (2.2.3)
     rack-mini-profiler (2.3.4)
       rack (>= 1.2.0)
-<<<<<<< HEAD
     rack-protection (2.2.0)
       rack
-=======
->>>>>>> origin/comment
     rack-proxy (0.7.2)
       rack
     rack-test (1.1.0)
@@ -221,10 +204,9 @@ GEM
       actionpack (>= 5.0)
       railties (>= 5.0)
     rexml (3.2.5)
-<<<<<<< HEAD
+    ruby-vips (2.1.4)
+      ffi (~> 1.12)
     ruby2_keywords (0.0.5)
-=======
->>>>>>> origin/comment
     rubyzip (2.3.2)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -297,14 +279,13 @@ DEPENDENCIES
   capybara (>= 3.26)
   devise
   html2slim
+  image_processing (~> 1.2)
   jbuilder (~> 2.7)
   listen (~> 3.3)
+  mini_magick (~> 4.8)
   mysql2 (~> 0.5)
-<<<<<<< HEAD
   omniauth-github!
   omniauth-rails_csrf_protection
-=======
->>>>>>> origin/comment
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.5)

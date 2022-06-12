@@ -21,5 +21,5 @@ class User < ApplicationRecord
   end
   has_many :posts
   has_many :comments
-
+  has_one_attached :profile_picture
 end

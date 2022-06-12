@@ -1,17 +1,66 @@
 .title
   .make-center-column Gassiper
-.title2  
+.title2
   .make-center-column Edit profile
 
-.form-input.make-center-column 
-  = form_with modle: resource, as: resource_name, url: user_registration_path(resource_name), method: :patch do |user|
+.form-upload.make-center-column
+  .upload-image
+    - if @user.profile_picture.attached?
+        = image_tag url_for(@user.profile_picture), class: "upload-image", id: 'preview'
+    - else
+        = image_tag "nopic.jpg", class: "upload-image", id: 'preview'
+  = form_with model: [:info, @user], method: :patch do |user|
+
+    = user.file_field :profile_picture, class: "photo_upload", id: "user_img",
+      onchange: "previewImage(this)",accept: 'image/jpg,image/jpeg,image/png,image/gif'
+
     .form-control
       = user.label "お名前"
       = user.text_field :name, value: current_user.name
     .form-control
-      = user.label "自己紹介"    
-      = user.text_area :introduce, value: current_user.introduce 
-  
+      = user.label "自己紹介"
+      = user.text_area :introduce, value: current_user.introduce
+
     = user.submit '編集', class: 'form-button'
-  
-  = link_to '戻る', registrations_show_path, class: 'form-button'
+
+  = link_to '戻る', info_user_path(current_user), class: 'form-button'
+scss:
+  .image_input_btn{
+    display: block;
+    background-color: #228B22;
+    width: 300px;
+    height: 50px;
+    margin-top: 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+    padding-top: 2px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 15px;
+    &:hover{
+      background-color: orange;
+    }
+  }
+  .empty-pic-upload{
+    background-color: gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+    width: 200px;
+    height: 200px;
+    z-index: 1;
+  }
+javascript:
+
+ function previewImage(obj)
+  {
+    var fileReader = new FileReader();
+    fileReader.onload = function() {
+    var element = document.getElementById('preview');
+    element.src = fileReader.result;
+        }
+        fileReader.readAsDataURL(obj.files[0]);
+    };
