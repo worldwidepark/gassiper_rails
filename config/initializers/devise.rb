@@ -246,7 +246,7 @@ Devise.setup do |config|
   # are using only default views.
     config.scoped_views = true
 
-    config.omniauth :github, '37169acb7b0ac8b90092', '9df29f39bfd80e1843d837911e52473bdf741b39',scope: "user:email"
+    config.omniauth :github, '9add9169ef3c0f66d7bd', '221884ce789d9ff83b71c0cb673be29a64976730',scope:'read:user'
   # Configure the default scope given to Warden. By default it's the first
   # devise role declared in your routes (usually :user).
   # config.default_scope = :user
