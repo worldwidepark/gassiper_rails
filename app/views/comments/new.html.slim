@@ -1,9 +1,9 @@
-.title 
+.title
   .make-center-column Gassiper
-.title2  
-  .make-center-column Comment to Gassip ! 
+.title2
+  .make-center-column Comment to Gassip !
 - if @comment.errors.any?
-  - @comment.errors.full_messages.each do |message| 
+  - @comment.errors.full_messages.each do |message|
     .errors
       = message
 
@@ -14,4 +14,4 @@
     .post-input-shell
       = form.text_area :text, class: 'post-input-form', maxlength: "140", required: true
       = form.submit '投稿', class: 'post-submit'
-      = link_to '戻る', post_path(@post.id), class: 'post-submit'
+      = link_to '戻る', post_path(@post), class: 'post-submit'
