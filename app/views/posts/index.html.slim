@@ -15,7 +15,7 @@
           - else
             .empty-pic no picture
           .user-info-name
-            = link_to post.user.name, info_user_path(post.user.id)
+            = link_to post.user.name, user_path(post.user.id)
         .post-shell
           = link_to simple_format(post.text), post_path(post.id)
         - if post.user.id == current_user.id
@@ -25,7 +25,7 @@
   .form-post
     = link_to 'つぶやき', new_post_path
     br
-    = link_to current_user.name, info_user_path(current_user)
+    = link_to current_user.name, user_path(current_user)
   .nav.make-center-column
     = button_to 'Log out', destroy_user_session_path(current_user), method: :delete, class: 'nav-button'
 - else
