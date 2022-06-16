@@ -9,7 +9,7 @@
         = image_tag url_for(@user.profile_picture), class: "upload-image", id: 'preview'
     - else
         = image_tag "nopic.jpg", class: "upload-image", id: 'preview'
-  = form_with model: [:info, @user], method: :patch do |user|
+  = form_with model: @user, method: :patch do |user|
 
     = user.file_field :profile_picture, class: "photo_upload", id: "user_img",
       onchange: "previewImage(this)",accept: 'image/jpg,image/jpeg,image/png,image/gif'
@@ -23,7 +23,7 @@
 
     = user.submit '編集', class: 'form-button'
 
-  = link_to '戻る', info_user_path(current_user), class: 'form-button'
+  = link_to '戻る', user_path(current_user), class: 'form-button'
 scss:
   .image_input_btn{
     display: block;
