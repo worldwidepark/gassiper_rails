@@ -9,8 +9,6 @@ Rails.application.routes.draw do
     :sessions => 'sessions/sessions'
   }
 
-
-
   resources :posts , only: [:index, :new, :create,:show, :destroy] do
     resources :comments , only: [:new, :create, :destroy]
   end
