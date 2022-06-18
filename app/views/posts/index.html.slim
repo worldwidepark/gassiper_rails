@@ -21,6 +21,7 @@
         - if post.user.id == current_user.id
           .place-delete-button
             = button_to '削除', post_path(post.id), method: 'delete', class: 'delete-button'
+            = button_to 'heart',post_likes_path(post.id), method: 'post'
 - if current_user
   .form-post
     = link_to 'つぶやき', new_post_path
