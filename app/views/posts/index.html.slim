@@ -21,7 +21,14 @@
         - if post.user.id == current_user.id
           .place-delete-button
             = button_to '削除', post_path(post.id), method: 'delete', class: 'delete-button'
-            = button_to 'heart',post_likes_path(post.id), method: 'post'
+
+        - if post.likes.find_by(user_id: current_user)
+          = button_to likes_path, method: 'delete', params: {post_id: post.id}
+            i class="fa fa-heart"
+        - else
+          = button_to likes_path, method: 'post', params: {post_id: post.id}
+            i class="far fa-heart"
+
 - if current_user
   .form-post
     = link_to 'つぶやき', new_post_path
@@ -41,3 +48,11 @@ scss:
     margin-left: -150px ;
   }
 
+- @likes.each do |like|
+  - if like.like
+    = like.user_id
+    = like.likable_type
+    = like.likable_id
+    br
+/ =current_user.id
+span class="far fa-heart"
