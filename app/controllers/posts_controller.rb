@@ -3,9 +3,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
     @likes = Like.all
-    if current_user
-      @like = Like.find_by(user_id: current_user.id)
-    end
+    @like = Like.new()
   end
 
   def new
@@ -24,7 +22,6 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     if @post.destroy
-      @post.likes.destroy_all
       redirect_to posts_path, notice: "削除が成功しました。"
     else
       redirect_to posts_path, alert: "削除が失敗しました。"
@@ -34,6 +31,9 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comments = @post.comments
+    if current_user
+      @like = Like.find_by(user_id: current_user.id)
+    end
   end
 
   def edit

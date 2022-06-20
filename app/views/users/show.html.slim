@@ -36,6 +36,18 @@
     .place-deactivate-button
       = button_to '退会', user_registration_path, method: :delete, class: 'deactivate-button'
 
+p Gassips And Comments
+p Gassips !
+- @posts.each do |post|
+  = post.text
+p comments !
+- @comments.each do |comment|
+  = comment.text
+
+p いいねした一覧
+p Gassips
+  - likes = Post.
+p Comments
 scss:
   .place-deactivate-button{
     position: fixed;
