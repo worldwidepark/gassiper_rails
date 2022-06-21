@@ -1,14 +1,22 @@
-
-.nav{
+.post {
+  display: flex;
+  flex-direction: row;
+  background-color: wheat;
+  padding: 10px 15px 20px 15px;
+  margin: 5px 0;
+  border-radius: 20px;
+  position: relative;
+}
+.nav {
   position: fixed;
-  top:100px;
+  top: 100px;
   left: 80%;
   border-radius: 25px;
-  border: none;  
+  border: none;
 }
-.nav-button{
+.nav-button {
   font-weight: 600;
-  background-color:white;
+  background-color: white;
   width: 150px;
   padding: 3px 0;
   border-radius: 25px;
@@ -16,14 +24,13 @@
   font-size: 15px;
   text-align: center;
 }
-.make-center-post{
-  margin-top: 15px;
+.make-center-post {
+  margin-top: 50px;
   display: flex;
-  justify-content: center; 
-  flex-direction: column; 
+  flex-direction: column;
   align-items: center;
 }
-.form-post{
+.form-post {
   position: fixed;
   top: 50%;
   left: 80%;
@@ -36,64 +43,70 @@
   padding: 5px;
   width: 150px;
 }
-.post-shell{
+.post-shell {
   margin-top: 10px;
   width: 400px;
   background-color: white;
   padding: 30px 30px;
   border-radius: 25px;
-  word-break:break-all;
+  word-break: break-all;
 }
-.user-info{
-  position: relative;
-  top: 25px;
-  right: 15px;
-  font-size:20px;
-  background-color: salmon;
-  width: 100px;
-  text-align: center;
-  border-radius: 15px; 
+.place-delete-button {
+  position: absolute;
+  left: 500px;
+  top: 70%;
 }
-.delete-button{
-  position: relative;
-  left: 350px;
-  top: 10px;
-  font-size:10px;
+.delete-button {
+  font-size: 10px;
   background-color: orange;
   width: 50px;
   text-align: center;
   border-radius: 5px;
+  border: none;
 }
-.post-input-shell{
+.post-input-shell {
   width: 500px;
   height: 300px;
   position: absolute;
   top: 150px;
   left: 50%;
-  margin-left: -250px ;    
+  margin-left: -250px;
   background-color: white;
   border-radius: 20px;
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   align-items: center;
-  justify-content: center; 
+  justify-content: center;
 }
-.post-input-form{
+.post-input-form {
   width: 400px;
   height: 200px;
   border: none;
   resize: none;
   outline: none;
-} 
-.post-submit{
+}
+.post-submit {
   position: relative;
   top: 100px;
   font-weight: 600;
-  background-color:white;
+  background-color: white;
   width: 150px;
   border-radius: 25px;
   border: none;
   font-size: 20px;
   font-family: Arial, Helvetica, sans-serif;
   margin-top: 5px;
+}
+.user-info {
+  position: relative;
+  top: 10px;
+  right: 5px;
+}
+.user-info-name {
+  margin-top: 10px;
+  font-size: 15px;
+  background-color: salmon;
+  width: 100px;
+  text-align: center;
+  border-radius: 15px;
 }

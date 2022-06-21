@@ -1,20 +1,25 @@
 .title
   .make-center-column Welcome to Gassiper
-.title2  
+.title2
   .make-center-column Login
 .make-center-column
   .flash
     .alert
-      = alert  
-.form-input.make-center-column 
+      = alert
+.form-input.make-center-column
   = form_with model: resource, as: resource_name, url: user_session_path(resource_name) do |form|
     .form-control
       = form.label :email
       = form.text_field :email
-    .form-control    
+    .form-control
       = form.label :password
       = form.text_field :password
-        
+
     = form.submit 'Login', class: 'form-button'
 
   = link_to 'Sign up', new_user_registration_path, class: 'form-button'
+
+  - if devise_mapping.omniauthable?
+    - resource_class.omniauth_providers.each do |provider|
+      = button_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", user_github_omniauth_authorize_path, method: :posts, class: 'form-button-git'
+

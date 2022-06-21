@@ -23,7 +23,6 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
@@ -58,3 +57,9 @@ gem 'devise'
 gem 'bcrypt','~> 3.1.17'
 gem 'slim-rails'
 gem 'html2slim'
+gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
+gem 'omniauth-rails_csrf_protection'
+gem 'image_processing', '~> 1.2'
+gem 'mini_magick', '~> 4.8'
+gem 'pry-rails'
+gem 'dotenv-rails'
