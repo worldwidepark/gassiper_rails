@@ -15,6 +15,11 @@
     = alert
 
 .make-center-column
+  .place-of-pic
+    - if @user.profile_picture.attached?
+      = image_tag @user.profile_picture, class: "image"
+    - else
+      .empty-pic no picture
   .show-form.make-center-column
     .show-form-control
       .show-label お名前
@@ -24,33 +29,40 @@
       .show-label 自己紹介
       .show-introduce
         = @user.introduce
-  .place-of-pic
-    - if @user.profile_picture.attached?
-      = image_tag @user.profile_picture, class: "image"
-    - else
-      .empty-pic no picture
+
   - if current_user.id == @user.id
     .show-button
         .form-button
           = link_to '編集', edit_user_registration_path, class: 'form-button'
     .place-deactivate-button
       = button_to '退会', user_registration_path, method: :delete, class: 'deactivate-button'
+  .profile-box-under
+    .profile-box-under-small
+      h2 Gassips And Comments
+      h3 Gassips !
+      - @user.posts.each do |post|
+        = post.text
+      h3 comments !
+      - @user.comments.each do |comment|
+        = comment.text
+    .profile-box-under-small
+      h2 いいねした一覧
+      h3 Gassips
+      - @posts.each do |post|
+        - if post.likes.find_by(user_id: @user.id)
+          = post.text
+          = post.user.name
+          br
+      h3 Comments
+      - @comments.each do |comment|
+        - if comment.likes.find_by(user_id: @user.id)
+          = comment.text
+          = comment.user.name
+          br
 
-p Gassips And Comments
-p Gassips !
-- @posts.each do |post|
-  = post.text
-p comments !
-- @comments.each do |comment|
-  = comment.text
-
-p いいねした一覧
-p Gassips
-  - likes = Post.
-p Comments
 scss:
   .place-deactivate-button{
-    position: fixed;
+    position: absolute;
     top: 120px;
     left: 90%;
   }
@@ -66,8 +78,8 @@ scss:
     width: 300px;
     background-color:white;
     border-radius: 25px;
-    position: fixed;
-    top: 200px;
+    position: relative;
+    z-index: -1;
   }
   .show-form-control{
     height: 100px;
@@ -89,8 +101,8 @@ scss:
     font-size: 20px;
   }
   .show-button{
-    position: fixed;
-    top: 600px;
+    position: relative;
+    top: 10px;
   }
   .show-introduce{
     font-size: 15px;
@@ -98,8 +110,23 @@ scss:
   .go-post-show{
     margin-left: 10px;
     font-size: 12px;
+    z-index: 1;
   }
   .place-of-pic{
     position: relative;
-    top: 20px;
+    top: 40px;
+  }
+  .profile-box-under{
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    top: 50px;
+  }
+  .profile-box-under-small{
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    padding: 30px;
+    margin: 10px;
+    background-color: white;
   }

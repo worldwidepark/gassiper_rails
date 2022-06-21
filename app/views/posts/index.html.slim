@@ -23,16 +23,11 @@
             = button_to '削除', post_path(post.id), method: 'delete', class: 'delete-button'
 
         - if post.likes.find_by(user_id: current_user)
-          = button_to likes_path, method: 'delete', params: {post_id: post.id}
-            i class="fa fa-heart"
+          = button_to likes_path, method: 'delete', params: {post_id: post.id}, class: "no-button"
+            i class="fa fa-heart like-button"
         - else
-          = button_to likes_path, method: 'post', params: {post_id: post.id}
-            i class="far fa-heart"
-        - post.comments.each do |comment|
-          - comment.likes.each do |like|
-            = like.user_id
-            = like.likable_type
-            = like.likable_id
+          = button_to likes_path, method: 'post', params: {post_id: post.id}, class: "no-button"
+            i class="far fa-heart like-button"
 - if current_user
   .form-post
     = link_to 'つぶやき', new_post_path
@@ -45,18 +40,24 @@
     = button_to 'Log in', new_user_session_path, class: 'nav-button', method: :get
 
 scss:
- .flash-index{
+  .flash-index{
     position: absolute;
     top: 45px;
     left: 50%;
     margin-left: -150px ;
   }
 
-- @likes.each do |like|
-  - if like.like
-    = like.user_id
-    = like.likable_type
-    = like.likable_id
-    br
-/ =current_user.id
-span class="far fa-heart"
+  .like-button{
+    color: red;
+    font-size: 25px;
+    background-color: wheat;
+    width: 20px;
+    border: none;
+    text-align: center;
+  }
+  .no-button{
+    position: relative;
+    top: 120px;
+    border: none;
+    background-color:wheat;
+  }
