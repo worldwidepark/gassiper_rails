@@ -38,27 +38,85 @@
       = button_to '退会', user_registration_path, method: :delete, class: 'deactivate-button'
   .profile-box-under
     .profile-box-under-small
-      h2 Gassips And Comments
+      h2 Your Gassips And Comments
       h3 Gassips !
       - @user.posts.each do |post|
-        = post.text
+        .post
+          .user-info
+            - if  post.user.profile_picture.attached?
+              = image_tag post.user.profile_picture, class: "image"
+            - else
+              .empty-pic no picture
+            .user-info-name
+              = post.user.name
+          .post-shell.text-align-initial
+            = link_to simple_format(post.text), post_path(post.id)
+          - if post.user.id == current_user.id
+            .place-delete-button
+              = button_to '削除', post_path(post.id), method: 'delete', class: 'delete-button'
+
+
       h3 comments !
+
       - @user.comments.each do |comment|
-        = comment.text
+        .comments
+          .post
+            .user-info
+              - if  comment.post.user.profile_picture.attached?
+                = image_tag comment.post.user.profile_picture, class: "image"
+              - else
+                .empty-pic no picture
+              .user-info-name
+                = link_to comment.post.user.name, user_path(comment.post.user.id)
+            .post-shell.text-align-initial
+              = link_to simple_format(comment.post.text), post_path(comment.post.id)
+          .comment-shell.text-align-initial
+            = simple_format(comment.text)
+          .user-name-comment
+            = comment.user.name
+
     .profile-box-under-small
       h2 いいねした一覧
-      h3 Gassips
+      h3 Gassips !
       - @posts.each do |post|
         - if post.likes.find_by(user_id: @user.id)
-          = post.text
-          = post.user.name
-          br
-      h3 Comments
+          .post
+            .user-info
+              - if  post.user.profile_picture.attached?
+                = image_tag post.user.profile_picture, class: "image"
+              - else
+                .empty-pic no picture
+              .user-info-name
+                = link_to post.user.name, user_path(post.user.id)
+            .post-shell.text-align-initial
+              = link_to simple_format(post.text), post_path(post.id)
+
+            - if post.likes.find_by(user_id: current_user.id) && @user == current_user
+              = button_to likes_path, method: 'delete', params: {post_id: post.id, user_id: @user.id, from_user_show: true}, class: "no-button"
+                i class="fa fa-heart like-button"
+
+
+      h3 Comments !
       - @comments.each do |comment|
         - if comment.likes.find_by(user_id: @user.id)
-          = comment.text
-          = comment.user.name
-          br
+          .comments
+            .post
+              .user-info
+                - if  comment.post.user.profile_picture.attached?
+                  = image_tag comment.post.user.profile_picture, class: "image"
+                - else
+                  .empty-pic no picture
+                .user-info-name
+                  = link_to comment.post.user.name, user_path(comment.post.user.id)
+              .post-shell.text-align-initial
+                = link_to simple_format(comment.post.text), post_path(comment.post.id)
+            .comment-shell.text-align-initial
+              = simple_format(comment.text)
+            .user-name-comment
+              = comment.user.name
+            - if comment.likes.find_by(user_id: current_user) && @user == current_user
+              = button_to likes_path, method: 'delete', params: {comment_id: comment.id, user_id: @user.id, from_user_show: true}, class: "comment-no-button"
+                i class="fa fa-heart comment-like-button"
 
 scss:
   .place-deactivate-button{
@@ -129,4 +187,65 @@ scss:
     padding: 30px;
     margin: 10px;
     background-color: white;
+  }
+  .text-align-initial{
+    text-align: initial;
+  }
+  .comments{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: solid aquamarine;
+    border-radius: 20px;
+    margin: 1px;
+  }
+  .comment-shell{
+    position: relative;
+    width: 330px;
+    background-color: beige;
+    padding: 5px 15px;
+    border-radius: 5px;
+    word-break:break-all;
+    color: black;
+    left: 10px;
+    top: 5px;
+  }
+  .user-name-comment{
+    position: relative;
+    width: fit-content;
+    top: -40px;
+    right: 220px;
+    background-color: pink;
+    padding: 5px;
+    font-size: 10px;
+    border-radius: 5px;
+  }
+  .like-button{
+    color: red;
+    font-size: 20px;
+    background-color: wheat;
+    width: 15px;
+    border: none;
+    text-align: center;
+  }
+  .no-button{
+    position: relative;
+    top: 120px;
+    border: none;
+    background-color:wheat;
+  }
+  .comment-no-button{
+    position: relative;
+    top: -60px;
+    right: -210px;
+    border: none;
+    background-color:white;
+  }
+  .comment-like-button{
+    color: red;
+    font-size: 20px;
+    background-color: white;
+    width: 15px;
+    border: none;
+    text-align: center;
   }

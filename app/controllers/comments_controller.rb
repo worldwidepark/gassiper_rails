@@ -5,7 +5,8 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new(post_params)
+    @post= Post.find(params[:post_id])
+    @comment = @post.comments.create(post_params)
     if @comment.save
       redirect_to post_path(@comment.post_id), notice: "コメントが作成されました。"
     else
@@ -15,8 +16,8 @@ class CommentsController < ApplicationController
   end
 
   private
-  
-  def post_params    
+
+  def post_params
     params.require(:comment).permit(:text,:user_id,:post_id)
   end
 
