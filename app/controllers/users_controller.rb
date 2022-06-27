@@ -13,6 +13,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def follow
+  end
+
+  def unfollow
+  end
+
+
   private
 
   def user_params

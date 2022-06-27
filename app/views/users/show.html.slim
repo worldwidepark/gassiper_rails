@@ -36,6 +36,17 @@
           = link_to '編集', edit_user_registration_path, class: 'form-button'
     .place-deactivate-button
       = button_to '退会', user_registration_path, method: :delete, class: 'deactivate-button'
+  - else
+    .place-deactivate-button
+      - if @user.follower.include?(id: current_user.id)
+        = button_to 'follow', follows_path, params: {want_follow_user_id: params[:id]}
+        - current_user.follows.each do |following_user|
+          = following_user.followed_id
+          = following_user.follower_id
+      - else
+        = button_to 'unfollow', follows_path, method: :delete, paramas: {want_unfollow_user_id: params[:id]}
+
+
   .profile-box-under
     .profile-box-under-small
       h2 Your Gassips And Comments
