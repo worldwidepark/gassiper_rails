@@ -2,8 +2,6 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
-    @likes = Like.all
-    @like = Like.new()
   end
 
   def new
@@ -31,9 +29,6 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comments = @post.comments
-    if current_user
-      @like = Like.find_by(user_id: current_user.id)
-    end
   end
 
   def edit

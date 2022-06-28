@@ -22,11 +22,12 @@
           .place-delete-button
             = button_to '削除', post_path(post.id), method: 'delete', class: 'delete-button'
 
-        - if post.likes.find_by(user_id: current_user.id)
-          = button_to likes_path, method: 'delete', params: {post_id: post.id}, class: "no-button"
+        / - if post.likes.find_by(user_id: current_user.id)
+        - if current_user.liked(post)
+          = button_to likes_path, method: 'delete', params: {likable_type: "Post", likable_id: post.id}, class: "no-button"
             i class="fa fa-heart like-button"
         - else
-          = button_to likes_path, method: 'post', params: {post_id: post.id}, class: "no-button"
+          = button_to likes_path, method: 'post', params: {likable_type: "Post", likable_id: post.id}, class: "no-button"
             i class="far fa-heart like-button"
 - if current_user
   .form-post
