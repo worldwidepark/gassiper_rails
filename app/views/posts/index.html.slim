@@ -21,8 +21,6 @@
         - if post.user.id == current_user.id
           .place-delete-button
             = button_to '削除', post_path(post.id), method: 'delete', class: 'delete-button'
-
-        / - if post.likes.find_by(user_id: current_user.id)
         - if current_user.liked(post)
           = button_to likes_path, method: 'delete', params: {likable_type: "Post", likable_id: post.id}, class: "no-button"
             i class="fa fa-heart like-button"
@@ -62,3 +60,4 @@ scss:
     border: none;
     background-color:wheat;
   }
+
