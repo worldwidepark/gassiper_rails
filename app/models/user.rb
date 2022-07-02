@@ -12,8 +12,13 @@ class User < ApplicationRecord
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
     end
-
   end
+
+  def liked(post_or_comment)
+    post_or_comment.likes.find_by(user_id: self.id)
+  end
+
+
   has_many :posts
   has_many :comments
   has_one_attached :profile_picture
