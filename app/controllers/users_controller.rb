@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+    @posts = @user.likes.where(likable_type: 'Post')
+    @comments = @user.likes.where(likable_type: 'Comment')
   end
 
   def update

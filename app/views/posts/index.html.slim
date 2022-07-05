@@ -11,7 +11,7 @@
       .post
         .user-info
           - if  post.user.profile_picture.attached?
-            = image_tag post.user.profile_picture.variant(gravity: :center, resize: "100x100^", crop: "90x90+0+0").processed, class: "image"
+            = image_tag post.user.profile_picture, class: "image"
           - else
             .empty-pic no picture
           .user-info-name
@@ -21,6 +21,12 @@
         - if post.user.id == current_user.id
           .place-delete-button
             = button_to '削除', post_path(post.id), method: 'delete', class: 'delete-button'
+        - if current_user.liked(post)
+          = button_to likes_path, method: 'delete', params: {likable_type: "Post", likable_id: post.id}, class: "no-button"
+            i class="fa fa-heart like-button"
+        - else
+          = button_to likes_path, method: 'post', params: {likable_type: "Post", likable_id: post.id}, class: "no-button"
+            i class="far fa-heart like-button"
 - if current_user
   .form-post
     = link_to 'つぶやき', new_post_path
@@ -33,10 +39,25 @@
     = button_to 'Log in', new_user_session_path, class: 'nav-button', method: :get
 
 scss:
- .flash-index{
+  .flash-index{
     position: absolute;
     top: 45px;
     left: 50%;
     margin-left: -150px ;
+  }
+
+  .like-button{
+    color: red;
+    font-size: 25px;
+    background-color: wheat;
+    width: 20px;
+    border: none;
+    text-align: center;
+  }
+  .no-button{
+    position: relative;
+    top: 120px;
+    border: none;
+    background-color:wheat;
   }
 

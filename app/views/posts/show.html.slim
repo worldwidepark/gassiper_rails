@@ -1,34 +1,84 @@
-.title 
+.title
   .make-center-column Gassiper
-.title2  
-  .make-center-column 
+.title2
+  .make-center-column
     = "#{@post.user.name}'s gassip"
 p.top-page = link_to 'TOPページ', posts_path
 
 .flash
   .notice
     = notice
+  .alert
+    = alert
+.make-center-post
+  .post-show
+    .info-post-show
+      .post-pic
+        - if  @post.user.profile_picture.attached?
+          = image_tag @post.user.profile_picture, class: "image"
+        - else
+          .post-show-empty-pic no picture
+      .user-name-post
+        = link_to @post.user.name, user_path(@post.user.id)
+    .post-shell.make-big-font
+      = simple_format(@post.text)
 
-.make-center-post 
-  .post-shell.make-big-font
-    = simple_format(@post.text)
-  .user-name-post
-    = @post.user.name
+    - if current_user.liked(@post)
+      = button_to likes_path, method: 'delete', params: {likable_type: "Post", likable_id: @post.id, from_post_show: true}, class: "post-no-button"
+        i class="fa fa-heart like-button"
+    - else
+      = button_to likes_path, method: 'post', params: {likable_type: "Post", likable_id: @post.id, from_post_show: true}, class: "post-no-button"
+        i class="far fa-heart like-button"
+
   h3 Comments
   - @comments.each do |comment|
     .comment-shell
       = simple_format(comment.text)
     .user-name-comment
-      = comment.user.name 
+      = link_to comment.user.name, user_path(comment.user.id)
+    - if current_user.liked(comment)
+      = button_to likes_path, method: 'delete', params: {likable_type: "Comment", likable_id: comment.id}, class: "comment-no-button"
+        i class="fa fa-heart like-button"
+    - else
+      = button_to likes_path, method: 'post', params: {likable_type: "Comment", likable_id: comment.id}, class: "comment-no-button"
+        i class="far fa-heart like-button"
 
-
-.form-post 
+.form-post
     = link_to 'Comment', new_post_comment_path(@post.id)
 
-scss: 
+scss:
+  .post-show {
+    display: flex;
+    flex-direction: row;
+    border-radius: 20px;
+    position: relative;
+    top: -60px;
+    left: -10px;
+  }
+  .info-post-show{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    top: 50px;
+    right: 20px;
+    text-align: center;
+  }
   .make-big-font{
     font-size: 25px;
     margin-top: 50px;
+  }
+  .post-pic{
+  }
+  .post-show-empty-pic {
+    background-color: gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    width: 100px;
+    height: 100px;
+    z-index: 1;
+    margin: 5px;
   }
   .comment-shell{
     width: 300px;
@@ -39,20 +89,39 @@ scss:
   }
   .user-name-post{
     position: relative;
-    top: -30px;
-    right: 300px;
-    background-color: pink;
+    height: 25px;
+    background-color: salmon;
     padding: 5px;
     color: green;
     border-radius: 5px;
   }
   .user-name-comment{
     position: relative;
-    top: -30px;
-    right: 200px;
-    background-color: green;
+    top: -45px;
+    right: 210px;
+    background-color: pink;
     padding: 5px;
-    color: pink;
     font-size: 10px;
-    border-radius: 5px; 
+    border-radius: 5px;
+  }
+  .like-button{
+    color: red;
+    font-size: 25px;
+    background-color: antiquewhite;
+    width: 20px;
+    border: none;
+    text-align: center;
+  }
+  .post-no-button{
+    position: relative;
+    top: 160px;
+    border: none;
+    background-color:antiquewhite;
+  }
+  .comment-no-button{
+    position: relative;
+    top: -60px;
+    right: -180px;
+    border: none;
+    background-color:antiquewhite;
   }
