@@ -6,6 +6,8 @@ class LikesController < ApplicationController
                     likable_id: params[:likable_id])
     if like.save
       redirect_back fallback_location: root_path
+    else
+      redirect_back fallback_location: root_path, alert: "'いいね'できませんでした。"
     end
   end
 
@@ -15,6 +17,8 @@ class LikesController < ApplicationController
                         likable_id: params[:likable_id])
     if like.delete
       redirect_back fallback_location: root_path
+    else
+      redirect_back fallback_location: root_path, alert: "'いいね'解除に失敗しました。"
     end
   end
 
