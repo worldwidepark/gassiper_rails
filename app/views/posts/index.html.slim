@@ -29,10 +29,12 @@
         - else
           = button_to likes_path, method: 'post', params: {likable_type: "Post", likable_id: post.id}, class: "no-button"
             i class="far fa-heart like-button"
+    /followingしていないユーザーへ提案。
     - if current_user.following.empty?
-      h2 You don't have any followers
+      h2 You don't have any followers.
       h2 Let's find the new friend from Gassips by unfollowed ↓↓↓↓
 
+    /followしてないユーザーのpost。
     h1 Gassips by unfollowed
     - @posts_unfollowed.each do |post|
       .post
