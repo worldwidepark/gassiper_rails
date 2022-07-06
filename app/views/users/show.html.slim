@@ -39,7 +39,8 @@
   - else
     .place-deactivate-button
       / current_userが@Userをフォローしているかを確認
-      - if current_user.follows.find_by(followed_id: @user.id)
+      / - if current_user.follows.find_by(followed_id: @user.id)
+      -if current_user.is_following(@user.id)
         = button_to 'unfollow', follows_path, method: :delete, params: {want_unfollow_user_id: params[:id]},  class: 'unfollow-button'
       - else
         = button_to 'follow', follows_path, params: {want_follow_user_id: params[:id]}, class: 'follow-button'
@@ -87,8 +88,8 @@
       h2 いいねした投稿一覧
       h3 Gassips !
       - @posts.each do |like_post|
-        - user = like_post.user
         - post = like_post.likable
+        - user = post.user
         .post
           .user-info
             - if  user.profile_picture.attached?
@@ -96,7 +97,7 @@
             - else
               .empty-pic no picture
             .user-info-name
-              = link_to user.name, user_path(post.user.id)
+              = link_to user.name, user_path(user.id)
           .post-shell.text-align-initial
             = link_to simple_format(post.text), post_path(post.id)
 
