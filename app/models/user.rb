@@ -28,7 +28,7 @@ class User < ApplicationRecord
   end
 
   def is_following(user_id)
-    self.follows.find_by(followed_id: user_id)
+    self.follows.find_by(followed_id: user_id).present?
   end
 
   has_many :posts

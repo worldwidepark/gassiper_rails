@@ -39,7 +39,6 @@
   - else
     .place-deactivate-button
       / current_userが@Userをフォローしているかを確認
-      / - if current_user.follows.find_by(followed_id: @user.id)
       -if current_user.is_following(@user.id)
         = button_to 'unfollow', follows_path, method: :delete, params: {want_unfollow_user_id: params[:id]},  class: 'unfollow-button'
       - else
