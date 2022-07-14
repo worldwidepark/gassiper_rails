@@ -20,7 +20,6 @@ services:
       - db
     links:
       - db
-
   db:
     image: mysql:8
     container_name: "db_mysql"
