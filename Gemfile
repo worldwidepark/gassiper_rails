@@ -50,6 +50,8 @@ group :test do
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'rspec-rails'
   gem 'factory_bot_rails'
+  #testするたびにdetabase 初期化
+  gem 'database_cleaner'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
