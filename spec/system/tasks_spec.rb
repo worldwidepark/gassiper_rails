@@ -83,6 +83,29 @@ describe '正常系', type: :system do
 
 
   describe 'PostとComment' do
+    context 'Post 作成' do
+      before do
+        user_a = FactoryBot.create(:user, name: 'user', email: 'pakr21@naver.com', password: '123123123')
+        visit new_user_session_path
+        fill_in 'Email', with: 'pakr21@naver.com'
+        fill_in 'Password', with: '123123123'
+        click_button 'Login'
+      end
+      it 'post作成し、トップページに表示する。' do
+
+        click_link 'つぶやき'
+        fill_in 'post_text', with: 'this is post test'
+        click_button '投稿'
+        expect(page).to have_content 'this is post test'
+
+        click_link 'this is post test'
+        click_link 'Comment'
+        fill_in 'comment_text', with: 'this is comment test'
+        click_button '投稿'
+
+        expect(page).to have_content 'this is comment test'
+      end
+    end
   end
 
 
