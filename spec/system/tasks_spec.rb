@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'タスク管理機能', type: :system do
+describe '正常系', type: :system do
   describe 'ユーザーSign upとLog in' do
 
     context 'ユーザーSign up' do
@@ -13,7 +13,7 @@ describe 'タスク管理機能', type: :system do
         click_button 'Sign up'
       end
 
-      it 'root_pathのpost画面が出る' do
+      it 'post画面が出る' do
         uri = URI.parse(current_url)
         expect("#{uri.path}").to eq("/posts")
       end
@@ -34,4 +34,57 @@ describe 'タスク管理機能', type: :system do
       end
     end
   end
+
+  describe 'ユーザー詳細ページの作成' do
+    context 'ユーザー編集ページに遷移' do
+      before do
+        user_a = FactoryBot.create(:user, name: 'user', email: 'pakr21@naver.com', password: '123123123')
+        visit new_user_session_path
+        fill_in 'Email', with: 'pakr21@naver.com'
+        fill_in 'Password', with: '123123123'
+        click_button 'Login'
+      end
+      it 'root_pathのpost画面が出る' do
+        click_link 'user'
+        click_link '編集'
+        uri = URI.parse(current_url)
+        expect("#{uri.path}").to eq("/users/edit")
+
+        fill_in 'user_name', with: 'user'
+        fill_in 'user_introduce', with: '123123123'
+        click_button '編集'
+        expect(page).to have_content '更新に成功しました。'
+      end
+    end
+
+    context '脱退' do
+      before do
+        user_a = FactoryBot.create(:user, name: 'user', email: 'pakr21@naver.com', password: '123123123')
+        visit new_user_session_path
+        fill_in 'Email', with: 'pakr21@naver.com'
+        fill_in 'Password', with: '123123123'
+        click_button 'Login'
+      end
+      it 'root_pathのpost画面が出る' do
+        click_link 'user'
+        click_button '退会'
+        expect(page).to have_content '23万のユーザーが待っています。Log inをしてください。'
+
+        visit new_user_session_path
+        fill_in 'Email', with: 'pakr21@naver.com'
+        fill_in 'Password', with: '123123123'
+        click_button 'Login'
+
+        expect(page).to have_content '退会になられたアカウントです。'
+      end
+    end
+
+  end
+
+
+  describe 'PostとComment' do
+  end
+
+
 end
+
