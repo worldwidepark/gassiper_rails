@@ -37,10 +37,10 @@ p.top-page = link_to 'TOPページ', posts_path
     .user-name-comment
       = link_to comment.user.name, user_path(comment.user.id)
     - if current_user.liked(comment)
-      = button_to likes_path, method: 'delete', params: {likable_type: "Comment", likable_id: comment.id}, class: "comment-no-button"
+      = button_to likes_path, method: 'delete', params: {likable_type: "Comment", likable_id: comment.id}, class: "comment-no-button" , id: "unlike-comment"
         i class="fa fa-heart like-button"
     - else
-      = button_to likes_path, method: 'post', params: {likable_type: "Comment", likable_id: comment.id}, class: "comment-no-button"
+      = button_to likes_path, method: 'post', params: {likable_type: "Comment", likable_id: comment.id}, class: "comment-no-button" , id: "like-comment"
         i class="far fa-heart like-button"
 
 .form-post

@@ -35,6 +35,7 @@ Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
 #↑コメントアウトする これによりspec/support/capybara.rbが読み込まれます。
 
 RSpec.configure do |config|
+  config.include OmniauthMocks
   config.before(:each) do |example|
     if example.metadata[:type] == :system
       if example.metadata[:js]

@@ -1,7 +1,8 @@
 FactoryBot.define do
-  factory :task do
-    name { 'テストを書く'}
-    description { 'Rspec&Capybara準備'}
-    user
+  factory :post do
+    text {'post for like test'}
+    user_id {'1'}
+    created_at {'1'}
+    updated_at {'1'}
   end
 end
