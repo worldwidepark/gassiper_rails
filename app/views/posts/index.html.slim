@@ -22,7 +22,7 @@
   .form-post
     = link_to 'つぶやき', new_post_path
     br
-    = link_to current_user.name, user_path(current_user)
+    = link_to current_user.name, user_path(current_user), id: 'user-detail'
   .nav.make-center-column
     = button_to 'Log out', destroy_user_session_path(current_user), method: :delete, class: 'nav-button'
 - else

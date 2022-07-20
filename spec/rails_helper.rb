@@ -36,6 +36,8 @@ Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
 
 RSpec.configure do |config|
   config.include OmniauthMocks
+  config.include UserTest
+  config.include PostTest
   config.before(:each) do |example|
     if example.metadata[:type] == :system
       if example.metadata[:js]
