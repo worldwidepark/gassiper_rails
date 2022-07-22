@@ -17,7 +17,15 @@ describe 'ユーザー管理', type: :system do
         click_button '投稿'
         expect(page).to have_content 'this is post test'
       end
+
+      it 'postが140文字異常だとエラーになる。。' do
+        click_link 'つぶやき'
+        fill_in 'post_text', with: 'this is post testthis is post testthis is post testthis is post testthis is post testthis is post testthis is post testthis is post testthis is post testthis is post test'
+        click_button '投稿'
+        expect(page).to have_content 'Text is too long (maximum is 140 characters)'
+      end
     end
+
 
     context 'Comment 作成' do
       let(:login_user) { user_a }
