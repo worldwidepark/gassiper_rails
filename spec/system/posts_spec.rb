@@ -18,7 +18,7 @@ describe 'ユーザー管理', type: :system do
         expect(page).to have_content 'this is post test'
       end
 
-      it 'postが140文字異常だとエラーになる。。' do
+      it 'postが140文字以上だとエラーになる。。' do
         click_link 'つぶやき'
         fill_in 'post_text', with: 'this is post testthis is post testthis is post testthis is post testthis is post testthis is post testthis is post testthis is post testthis is post testthis is post test'
         click_button '投稿'
@@ -41,6 +41,14 @@ describe 'ユーザー管理', type: :system do
         fill_in 'comment_text', with: 'this is comment test'
         click_button '投稿'
         expect(page).to have_content 'this is comment test'
+      end
+
+      it 'Commentが140文字以上だとエラーになる。。' do
+        click_link 'this is post test'
+        click_link 'Comment'
+        fill_in 'comment_text', with: 'this is post testthis is post testthis is post testthis is post testthis is post testthis is post testthis is post testthis is post testthis is post testthis is post test'
+        click_button '投稿'
+        expect(page).to have_content 'Text is too long (maximum is 140 characters)'
       end
     end
   end
@@ -85,6 +93,19 @@ describe 'ユーザー管理', type: :system do
         expect(page).to have_content 'this is comment test'
         #ユーザー詳細ページでいいねしたコメントが#unlike-commentを持っている
         expect(page).to have_selector '#unlike-comment'
+      end
+    end
+
+    context 'Likeのvalidates確認' do
+      let(:login_user) { user_a }
+      before do
+        @like = FactoryBot.build(:like)
+      end
+
+      it 'Likeのlikableがnilのとき' do
+        @like.user_id = login_user.id
+        @like.valid?
+        expect(@like.errors.full_messages).to include("Likable must exist")
       end
     end
   end

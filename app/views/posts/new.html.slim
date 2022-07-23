@@ -7,22 +7,21 @@ p.top-page = link_to 'TOPページ', posts_path
   .alert
     = alert
 
+.errors
+  - if @post.errors.any?
+    - @post.errors.full_messages.each do |message|
+      = message
 .make-center-column
 
-  .alert
-    - if @post.errors.any?
-      - @post.errors.full_messages.each do |message|
-
-        = message
   = form_with model: @post  do |form|
     = form.hidden_field :user_id, value: current_user.id
     .post-input-shell.bit-down
-      = form.text_area :text, class: 'post-input-form',  required: true
+      = form.text_area :text, class: 'post-input-form'
 
       = form.submit '投稿', class: 'post-submit'
 
 scss:
   .bit-down{
-    top: 300px;
+    top: 200px;
   }
 
