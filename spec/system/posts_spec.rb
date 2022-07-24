@@ -95,18 +95,5 @@ describe 'ユーザー管理', type: :system do
         expect(page).to have_selector '#unlike-comment'
       end
     end
-
-    context 'Likeのvalidates確認' do
-      let(:login_user) { user_a }
-      before do
-        @like = FactoryBot.build(:like)
-      end
-
-      it 'Likeのlikableがnilのとき' do
-        @like.user_id = login_user.id
-        @like.valid?
-        expect(@like.errors.full_messages).to include("Likable must exist")
-      end
-    end
   end
 end

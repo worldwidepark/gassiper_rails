@@ -164,8 +164,6 @@ describe 'ユーザー管理', type: :system do
         click_button '編集'
         expect(page).to have_selector("img[src$='test.jpg']")
       end
-
-
     end
   end
 
