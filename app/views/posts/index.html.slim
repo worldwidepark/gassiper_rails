@@ -13,9 +13,20 @@
       h2 You don't have any followers.
       h2 Let's find the new friend from Gassips by unfollowed ↓↓↓↓
 
-    /followしてないユーザーのpost。
-    h1 Gassips by unfollowed
-    = render partial: 'post', locals: {posts: @posts_unfollowed}
+    = form_with url: searchs_path, local: true, method: :get do |f|
+      = f.text_field :word
+      = f.select :kinds, options_for_select([['Posts'], ['Comments']])
+      = f.submit '検索'
+
+    - if @searched_results
+      h1 Search Result
+      - @searched_results.each do |result|
+        = result.text
+
+    else
+      /followしてないユーザーのpost。
+      h1 Gassips by unfollowed
+      = render partial: 'post', locals: {posts: @posts_unfollowed}
 
 
 - if current_user
