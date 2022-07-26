@@ -23,9 +23,12 @@ class Sessions::RegistrationsController < Devise::RegistrationsController
   end
 
   def destroy
-    current_user.update(deleted_flag: true)
-    sign_out(current_user)
-    redirect_to posts_path
+    if current_user.update(deleted_flag: true)
+      sign_out(current_user)
+      redirect_to posts_path
+    else
+      redirect_back fallback_location: root_path, alert: "退会に失敗しました。"
+    end
   end
 
   private

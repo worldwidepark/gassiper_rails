@@ -6,16 +6,22 @@ p.top-page = link_to 'TOPページ', posts_path
 .flash
   .alert
     = alert
-- if @post.errors.any?
-  - @post.errors.full_messages.each do |message|
-    .errors
+
+.errors
+  - if @post.errors.any?
+    - @post.errors.full_messages.each do |message|
       = message
 .make-center-column
+
   = form_with model: @post  do |form|
     = form.hidden_field :user_id, value: current_user.id
-    .post-input-shell
-      = form.text_area :text, class: 'post-input-form', maxlength: "140", required: true
+    .post-input-shell.bit-down
+      = form.text_area :text, class: 'post-input-form'
 
       = form.submit '投稿', class: 'post-submit'
 
+scss:
+  .bit-down{
+    top: 200px;
+  }
 
