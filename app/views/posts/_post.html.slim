@@ -1,38 +1,18 @@
-- if current_user
-  - posts.each do |post|
-    .post
-      .user-info
-        - if  post.user.profile_picture.attached?
-          = image_tag post.user.profile_picture, class: "image"
-        - else
-          .empty-pic no picture
-        .user-info-name
-          = link_to post.user.name, user_path(post.user.id), id: 'user-detail-on-post'
-      .post-shell
-        = link_to simple_format(post.text), post_path(post.id)
-        .time
-          = post.updated_at.strftime("%y-%m-%d %H:%M")
-
-      - if post.user.id == current_user.id
-        .place-delete-button
-          = button_to '削除', post_path(post.id), method: 'delete', class: 'delete-button'
-      - if current_user.liked(post)
-        = button_to likes_path, method: 'delete', params: {likable_type: "Post", likable_id: post.id}, class: "no-button", id: "unlike"
-          i class="fa fa-heart like-button"
+- posts.each do |post|
+  .post
+    .user-info
+      - if  post.user.profile_picture.attached?
+        = image_tag post.user.profile_picture, class: "image"
       - else
-        = button_to likes_path, method: 'post', params: {likable_type: "Post", likable_id: post.id}, class: "no-button", id: "like"
-          i class="far fa-heart like-button"
-- else
- - posts.each do |post|
-    .post
-      .user-info
-        - if  post.user.profile_picture.attached?
-          = image_tag post.user.profile_picture, class: "image"
-        - else
-          .empty-pic no picture
-        .user-info-name
-          = post.user.name
-      .post-shell
-        = simple_format(post.text)
-        .time
-          = post.updated_at.strftime("%y-%m-%d %H:%M")
+        .empty-pic no picture
+      .user-info-name
+        = link_to post.user.name, user_path(post.user.id), id: 'user-detail-on-post'
+    .post-shell
+      = link_to simple_format(post.text), post_path(post.id)
+      .time
+        = post.updated_at.strftime("%y-%m-%d %H:%M")
+
+    - if post.user.id == current_user.id
+      .place-delete-button
+        = button_to '削除', post_path(post.id), method: 'delete', class: 'delete-button'
+    = render partial: 'likes/like_post', locals: {post: post}

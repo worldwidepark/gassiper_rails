@@ -20,9 +20,7 @@ p.top-page = link_to 'TOPページ', posts_path
           .post-shell.text-align-initial
             = link_to simple_format(post.text), post_path(post.id)
 
-          - if current_user.liked(post)
-            = button_to likes_path, method: 'delete', params: {likable_type: "Post", likable_id: post.id, from_user_show: true}, class: "no-button", id: 'unlike'
-              i class="fa fa-heart like-button"
+          = render partial: 'likes/like_post', locals: {post: post}
 
     - elsif @searched_comments
       h3 Comments !
@@ -43,9 +41,7 @@ p.top-page = link_to 'TOPページ', posts_path
             = simple_format(comment.text)
           .user-name-comment
             = link_to comment.user.name, user_path(comment.user.id)
-          - if current_user.liked(comment)
-            = button_to likes_path, method: 'delete', params: {likable_type: "Comment", likable_id: comment.id}, class: "comment-no-button", id: "unlike-comment"
-              i class="fa fa-heart comment-like-button"
+          = render partial: 'likes/like_comment', locals: {comment: comment}
 
 scss:
 

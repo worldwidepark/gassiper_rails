@@ -8,13 +8,14 @@
 
 
 .make-center-post
-  = form_with url: searchs_path, local: true, method: :get do |f|
-    .search
-      .search-input
-        = f.text_field :word, class: "search-word", placeholder: "Search.."
-        = f.select :kinds, options_for_select([['Posts'], ['Comments']])
-      = f.submit '検索', class: "search-button"
+
   - if current_user
+    = form_with url: searchs_path, local: true, method: :get do |f|
+      .search
+        .search-input
+          = f.text_field :word, class: "search-word", placeholder: "Search.."
+          = f.select :kinds, options_for_select([['Posts'], ['Comments']])
+        = f.submit '検索', class: "search-button"
     = render partial: 'post', locals: {posts: @posts}
     /followingしていないユーザーへ提案。
     - if current_user.following.empty?
@@ -36,7 +37,7 @@
 - else
   .make-center-post
     .login-push 23万のユーザーが待っています。Log inをしてください。
-    = render partial: 'post', locals: {posts: @posts}
+    = render partial: 'post_no_current_user', locals: {posts: @posts}
   .nav.make-center-column
     = button_to 'Log in', new_user_session_path, class: 'nav-button', method: :get
 

@@ -1,0 +1,6 @@
+- if current_user.liked(comment)
+  = button_to likes_path, method: 'delete', params: {likable_type: "Comment", likable_id: comment.id}, class: "comment-no-button" , id: "unlike-comment"
+    i class="fa fa-heart comment-like-button"
+- else
+  = button_to likes_path, method: 'post', params: {likable_type: "Comment", likable_id: comment.id}, class: "comment-no-button" , id: "like-comment"
+    i class="far fa-heart comment-like-button"

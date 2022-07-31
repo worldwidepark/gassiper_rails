@@ -6,7 +6,7 @@ class SearchsController < ApplicationController
     else
       if @kind == "Posts"
         @searched_posts = Post.where("text LIKE?","%#{params[:word]}%")
-      elsif @kind = "Comments"
+      elsif @kind == "Comments"
         @searched_comments = Comment.where("text LIKE?", "%#{params[:word]}%")
       end
     end
