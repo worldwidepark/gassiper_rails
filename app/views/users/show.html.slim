@@ -100,9 +100,7 @@
           .post-shell.text-align-initial
             = link_to simple_format(post.text), post_path(post.id)
 
-          - if current_user.liked(post)
-            = button_to likes_path, method: 'delete', params: {likable_type: "Post", likable_id: post.id, from_user_show: true}, class: "no-button", id: 'unlike'
-              i class="fa fa-heart like-button"
+          = render partial: 'likes/like_post', locals: {post: post}
 
 
       h3 Comments !
@@ -124,9 +122,7 @@
             = simple_format(comment.text)
           .user-name-comment
             = comment.user.name
-          - if current_user.liked(comment)
-            = button_to likes_path, method: 'delete', params: {likable_type: "Comment", likable_id: comment.id}, class: "comment-no-button", id: "unlike-comment"
-              i class="fa fa-heart comment-like-button"
+          = render partial: 'likes/like_comment', locals: {comment: comment}
 
 scss:
   .place-deactivate-button{
