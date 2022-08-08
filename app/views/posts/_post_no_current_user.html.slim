@@ -1,13 +1,12 @@
-- posts.each do |post|
-  .post
-    .user-info
-      - if  post.user.profile_picture.attached?
-        = image_tag post.user.profile_picture, class: "image"
-      - else
-        .empty-pic no picture
-      .user-info-name
-        = post.user.name
-    .post-shell
-      = simple_format(post.text)
-      .time
-        = post.updated_at.strftime("%y-%m-%d %H:%M")
+.post
+  .user-info
+    - if  post.user.profile_picture.attached?
+      = image_tag post.user.profile_picture, class: "image"
+    - else
+      .empty-pic no picture
+    .user-info-name
+      = post.user.name
+  .post-shell
+    = simple_format(post.text)
+    .time
+      = post.updated_at.strftime("%y-%m-%d %H:%M")

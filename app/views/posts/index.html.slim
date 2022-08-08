@@ -16,7 +16,8 @@
           = f.text_field :word, class: "search-word", placeholder: "Search.."
           = f.select :kinds, options_for_select([['Posts'], ['Comments']])
         = f.submit '検索', class: "search-button"
-    = render partial: 'post', locals: {posts: @posts}
+    - @posts.each do |post|
+      = render partial: 'post', locals: {post: post}
     /followingしていないユーザーへ提案。
     - if current_user.following.empty?
       h2 You don't have any followers.
@@ -24,7 +25,8 @@
 
     /followしてないユーザーのpost。
     h1 Gassips by unfollowed
-    = render partial: 'post', locals: {posts: @posts_unfollowed}
+    - @posts_unfollowed.each do |post|
+      = render partial: 'post', locals: {post: post}
 
 
 - if current_user
@@ -37,7 +39,8 @@
 - else
   .make-center-post
     .login-push 23万のユーザーが待っています。Log inをしてください。
-    = render partial: 'post_no_current_user', locals: {posts: @posts}
+    - @posts.each do |post|
+      = render partial: 'post_no_current_user', locals: {post: post}
   .nav.make-center-column
     = button_to 'Log in', new_user_session_path, class: 'nav-button', method: :get
 
